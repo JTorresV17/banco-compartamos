@@ -20,7 +20,6 @@ export default function decorate(block) {
   imageWrapper.classList.add('image-wrapper');
   const image = document.createElement('img');
   image.src = imgSrc;
-  image.alt = imgAlt;
   imageWrapper.appendChild(image);
 
   const textContainer = document.createElement('div');
