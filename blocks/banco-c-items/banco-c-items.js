@@ -30,5 +30,9 @@ export default function decorate(block) {
     wrapper.appendChild(numero);
     wrapper.appendChild(descripcion);
     block.appendChild(wrapper);
+
+    console.log('Wrapper:', wrapper);
+    console.log('Numero:', numero);
+    console.log('Descripcion:', descripcion);
   });
 }
