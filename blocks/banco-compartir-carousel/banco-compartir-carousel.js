@@ -7,12 +7,15 @@ export default function decorate(block) {
   const carouselContainer = document.createElement('div');
   carouselContainer.className = 'banco-compartir-carousel-section';
 
-  [...block.children].forEach((row) => {
+  const items = [...block.children];
+
+  items.forEach((row) => {
     row.className = 'banco-compartir-carousel-item';
     [...row.children][0].className = 'banco-compartir-carousel-item-image';
     [...row.children][1].className = 'banco-compartir-carousel-item-title';
   });
 
+  carouselContainer.appendChild(...block.children);
   block.appendChild(carouselContainer);
-  // carouselContainer.append(...block.children);
+  
 }
