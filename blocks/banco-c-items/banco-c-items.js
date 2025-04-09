@@ -5,7 +5,7 @@ export default function decorate(block) {
   block.classList.add('requisitos-bloque');
   const contentWrapper = document.createElement('div');
 
-  rows.forEach((row, index) => {
+  rows.forEach((row) => {
     const cells = Array.from(row.children);
     const numeroEl = cells[0] || null;
     const colorTextoEl = cells[1] || null;
@@ -33,6 +33,7 @@ export default function decorate(block) {
       wrapper.appendChild(descripcion);
       contentWrapper.appendChild(wrapper);
     } else {
+      block.innerHTML = '';
     }
   });
   block.innerHTML = '';
