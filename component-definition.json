@@ -98,6 +98,21 @@
           }
         },
         {
+          "title": "banco-image-position",
+          "id": "banco-image-position",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "banco-image-position",
+                  "model": "banco-image-position"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards",
           "id": "cards",
           "plugins": {

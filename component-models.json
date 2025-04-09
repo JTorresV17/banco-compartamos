@@ -168,6 +168,39 @@
     ]
   },
   {
+    "id": "banco-image-position",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "positionImage",
+        "label": "image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Text Title",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "textColor",
+        "label": "Texto del Color de fondo",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
