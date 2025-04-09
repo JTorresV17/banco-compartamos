@@ -27,12 +27,12 @@ export default function decorate(block) {
 
     carouselContainer.appendChild(row);
   });
-
-  const itemWidth = items[0].offsetWidth; // Suponiendo que todos los items tienen el mismo tamaño
   
   block.appendChild(carouselContainer);
   block.appendChild(nextButton);
   block.prepend(prevButton);
+
+  const itemWidth = [...carouselContainer.children][0].offsetWidth; // Obtener el ancho del primer elemento del carrusel
 
   function moveCarousel() {
     console.log('Moving carousel to index:', currentIndex, itemWidth);
