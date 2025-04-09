@@ -142,6 +142,32 @@
     ]
   },
   {
+    "id": "banco-c-items",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "textoNumeroItem",
+        "label": "Texto del número del item",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "colorTexto",
+        "label": "Color de texto",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "textoDescripcion",
+        "label": "Texto descripción",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {

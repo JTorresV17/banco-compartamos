@@ -1,0 +1,30 @@
+.requisitos-bloque {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .requisito-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .requisito-numero {
+    width: 24px;
+    height: 24px;
+    background-color: var(--color-primary-items);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    flex-shrink: 0;
+  }
+  
+  .requisito-descripcion {
+    font-size: 14px;
+    color: #333;
+  }
+  
