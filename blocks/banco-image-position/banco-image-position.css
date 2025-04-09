@@ -1,31 +1,17 @@
 .image-text-container {
-    display: flex; /* Usamos Flexbox para colocar imagen y texto en una fila */
-    justify-content: space-between; /* Espaciamos la imagen y el texto */
-    align-items: center; /* Alineamos ambos elementos verticalmente */
-    gap: 20px; /* Espacio entre la imagen y el texto */
-  }
-  
-  .image-wrapper {
-    flex: 1; /* La imagen ocupará el 50% del ancho del contenedor */
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
   
   .image-wrapper img {
-    width: 100%; /* Hacemos que la imagen ocupe todo el contenedor */
-    height: auto; /* Mantiene las proporciones de la imagen */
+    width: 100%; /* Puedes ajustarlo según el tamaño de la imagen */
+    max-width: 200px; /* Establece un tamaño máximo si es necesario */
+    height: auto;
   }
   
   .text-wrapper {
-    flex: 1; /* El texto también ocupará el 50% del ancho */
-    padding: 10px;
-  }
-  
-  .text-wrapper h2 {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .text-wrapper p {
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
   }
   
