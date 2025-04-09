@@ -4,10 +4,8 @@ export default function decorate(block) {
   block.innerHTML = '';
 
   const { positionImage, title, description, textColor } = block.dataset;
-
   const container = document.createElement('div');
   container.classList.add('image-text-container');
-
   const imageWrapper = document.createElement('div');
   imageWrapper.classList.add('image-wrapper');
   const image = document.createElement('img');

@@ -29,7 +29,6 @@ export default function decorate(block) {
       if (color) {
         numero.style.backgroundColor = color;
       }
-
       const descripcion = document.createElement('div');
       descripcion.classList.add('requisito-descripcion');
       descripcion.textContent = descripcionEl.textContent.trim();
@@ -38,10 +37,6 @@ export default function decorate(block) {
       wrapper.appendChild(numero);
       wrapper.appendChild(descripcion);
       contentWrapper.appendChild(wrapper);
-
-      console.log('Numero:', numeroEl.textContent);
-      console.log('Color:', colorTextoEl.textContent);
-      console.log('Descripcion:', descripcionEl.textContent);
     } else {
       console.log('Algunas celdas están vacías o no existen');
     }
