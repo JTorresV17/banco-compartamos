@@ -51,7 +51,7 @@
   width: 20px;
   height: 26px;
 }
-.slick-next:hover{
+.slick-next:hover, .slick-next:focus{
   background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-right_mag.png);
 }
 .slick-prev{
@@ -60,6 +60,6 @@
   width: 20px;
   height: 26px;
 }
-.slick-prev:hover{
+.slick-prev:hover, .slick-prev:focus{
   background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-left_mag.png);
 }
