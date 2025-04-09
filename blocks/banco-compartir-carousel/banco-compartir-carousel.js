@@ -13,9 +13,11 @@ export default function decorate(block) {
     row.className = 'banco-compartir-carousel-item';
     [...row.children][0].className = 'banco-compartir-carousel-item-image';
     [...row.children][1].className = 'banco-compartir-carousel-item-title';
+
+    carouselContainer.appendChild(row);
   });
 
-  carouselContainer.appendChild(...block.children);
+  
   block.appendChild(carouselContainer);
   
 }
