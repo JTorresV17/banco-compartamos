@@ -10,7 +10,6 @@ export default function decorate(block) {
 
   const imgElement = imageElement?.querySelector('img');
   const imgSrc = imgElement?.src || '';
-  const imgAlt = imgElement?.alt || 'Image';
 
   const titleContent = titleElement?.textContent.trim() || '';
   const descriptionContent = descriptionElement?.textContent.trim() || '';
