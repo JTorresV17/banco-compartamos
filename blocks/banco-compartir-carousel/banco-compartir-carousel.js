@@ -26,7 +26,7 @@ export default function decorate(block) {
         $('.banco-compartir-carousel-block').slick({
           infinite: true,
           slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToScroll: 1
         });
       });
     };
