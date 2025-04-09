@@ -4,13 +4,15 @@ export default function decorate(block) {
   const items = Array.from(block.children);
 
   const imageElement = items.shift();
-  const textElement = items.shift();
+  const titleElement = items.shift();
+  const descriptionElement = items.shift();
 
   const imgElement = imageElement?.querySelector('img');
   const imgSrc = imgElement?.src || '';
   const imgAlt = imgElement?.alt || 'Image';
 
-  const textContent = textElement?.textContent.trim() || '';
+  const titleContent = titleElement?.textContent.trim() || '';
+  const descriptionContent = descriptionElement?.textContent.trim() || '';
 
   const container = document.createElement('div');
   container.classList.add('image-text-container');
@@ -22,15 +24,26 @@ export default function decorate(block) {
   image.alt = imgAlt;
   imageWrapper.appendChild(image);
 
-  const textWrapper = document.createElement('div');
-  textWrapper.classList.add('text-wrapper');
-  textWrapper.textContent = textContent;
+  const textContainer = document.createElement('div');
+  textContainer.classList.add('text-container');
+
+  const titleWrapper = document.createElement('div');
+  titleWrapper.classList.add('title-wrapper');
+  titleWrapper.textContent = titleContent;
+
+  const descriptionWrapper = document.createElement('div');
+  descriptionWrapper.classList.add('description-wrapper');
+  descriptionWrapper.textContent = descriptionContent;
+
+  textContainer.appendChild(titleWrapper);
+  textContainer.appendChild(descriptionWrapper);
 
   moveInstrumentation(imageElement, imageWrapper);
-  moveInstrumentation(textElement, textWrapper);
+  moveInstrumentation(titleElement, titleWrapper);
+  moveInstrumentation(descriptionElement, descriptionWrapper);
 
   container.appendChild(imageWrapper);
-  container.appendChild(textWrapper);
+  container.appendChild(textContainer);
 
   block.innerHTML = '';
   block.appendChild(container);
