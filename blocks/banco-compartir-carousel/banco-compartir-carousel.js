@@ -32,7 +32,7 @@ export default function decorate(block) {
   block.appendChild(nextButton);
   block.prepend(prevButton);
 
-  const itemWidth = [...carouselContainer.children][0].offsetWidth; // Obtener el ancho del primer elemento del carrusel
+  const itemWidth = 357; 
 
   console.log('Item width:', itemWidth);
   function moveCarousel() {
