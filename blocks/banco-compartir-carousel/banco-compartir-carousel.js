@@ -9,3 +9,13 @@ export default function decorate(block) {
     [...row.children][1].className = 'banco-compartir-carousel-item-title';
   });
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  
+  $('.banco-compartir-carousel-block').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3
+  });
+
+});
