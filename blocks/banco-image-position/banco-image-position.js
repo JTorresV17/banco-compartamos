@@ -1,14 +1,11 @@
-import { moveInstrumentation } from '../../scripts/scripts.js'; // Asegúrate de importar la función correctamente
+import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  // Limpiar el contenido previo del bloque
   block.innerHTML = '';
 
-  // Creamos el contenedor principal
   const container = document.createElement('div');
   container.classList.add('image-text-container');
 
-  // Obtenemos los valores del modelo JSON
   const positionImage = block.dataset.positionImage;
   const title = block.dataset.title;
   const description = block.dataset.description;
@@ -23,7 +20,6 @@ export default function decorate(block) {
 
   moveInstrumentation(imageWrapper, image);
 
-  // Creamos el bloque de texto
   const textWrapper = document.createElement('div');
   textWrapper.classList.add('text-wrapper');
   textWrapper.style.backgroundColor = textColor;
@@ -35,14 +31,11 @@ export default function decorate(block) {
   textWrapper.appendChild(titleElement);
   textWrapper.appendChild(descriptionElement);
 
-  // Usamos moveInstrumentation para mover el texto
   moveInstrumentation(textWrapper, titleElement);
   moveInstrumentation(textWrapper, descriptionElement);
 
-  // Añadimos los elementos al contenedor
   container.appendChild(imageWrapper);
   container.appendChild(textWrapper);
 
-  // Agregamos el contenedor al bloque
   block.appendChild(container);
 }
