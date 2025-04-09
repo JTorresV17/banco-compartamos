@@ -46,14 +46,20 @@
     content: none;
 }
 .slick-next{
-  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-right_mag.png) no-repeat;
+  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-right_mag.png);
   background-size: 100% 100%;
   width: 20px;
   height: 26px;
 }
+.slick-next:hover{
+  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-right_mag.png);
+}
 .slick-prev{
-  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-left_mag.png) no-repeat;
+  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-left_mag.png);
   background-size: 100% 100%;
   width: 20px;
   height: 26px;
+}
+.slick-prev:hover{
+  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-left_mag.png);
 }
