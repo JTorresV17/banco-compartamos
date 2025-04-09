@@ -1,12 +1,13 @@
 .banco-compartir-carousel-block {
-  width: 1070px;
   margin: 0 auto;
   display: flex;
   align-items: center;
+  width: 1130px;
 }	
 .banco-compartir-carousel-section{
   display: flex;
   overflow: hidden;
+  width: 1070px;
 }
 .banco-compartir-carousel-item{
     flex: 0 0 357px;
@@ -33,8 +34,12 @@
 
 .banco-compartir-carousel-button-prev,
 .banco-compartir-carousel-button-next{
-  width: 20px;
+  width: 27px;
   height: 27px;
+  background-size: 20px 27px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
 }
 
 .banco-compartir-carousel-button-prev{
