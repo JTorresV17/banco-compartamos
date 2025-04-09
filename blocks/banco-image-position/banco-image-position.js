@@ -7,9 +7,7 @@ export default function decorate(block) {
   const imgElement = imageElement?.querySelector('img');
   const imgSrc = imgElement?.src || '';
   const imgAlt = imgElement?.alt || 'Image';
-
   const textContent = textElement?.textContent.trim() || '';
-
   const container = document.createElement('div');
   container.classList.add('image-text-container');
 
