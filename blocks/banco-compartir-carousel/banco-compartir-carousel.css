@@ -1,6 +1,4 @@
 .banco-compartir-carousel-block {
-  display: flex;
-  overflow-x: auto;
   gap: 10px;
 }	
 /* Un scrollbar negro con fondo gris */
