@@ -1,21 +1,17 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  console.log('Contenido inicial del bloque:', block.innerHTML);  // Verifica si el bloque tiene contenido al principio
-  
-  // Aseguramos que el bloque tenga la estructura correcta
+  console.log('Contenido inicial del bloque:', block.innerHTML);
   const rows = Array.from(block.children);
   block.classList.add('requisitos-bloque');
 
-  // Creamos un contenedor para los elementos procesados
   const contentWrapper = document.createElement('div');
 
   rows.forEach((row, index) => {
     const cells = Array.from(row.children);
 
-    console.log(`Procesando fila ${index}:`, cells);  // Verifica las celdas que estamos procesando
+    console.log(`Procesando fila ${index}:`, cells);
 
-    // Verificamos si las celdas tienen contenido
     const numeroEl = cells[0] || null;
     const colorTextoEl = cells[1] || null;
     const descripcionEl = cells[2] || null;
@@ -51,7 +47,6 @@ export default function decorate(block) {
     }
   });
 
-  // Reemplazamos el contenido original del bloque con el nuevo contenido procesado
-  block.innerHTML = '';  // Limpiamos el bloque
-  block.appendChild(contentWrapper);  // Insertamos el nuevo contenido
+  block.innerHTML = '';
+  block.appendChild(contentWrapper);
 }
