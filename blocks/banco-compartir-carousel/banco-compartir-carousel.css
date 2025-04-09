@@ -1,5 +1,6 @@
 .banco-compartir-carousel-block {
-  gap: 10px;
+  width: 1070px;
+  margin: 0 auto;
 }	
 /* Un scrollbar negro con fondo gris */
 .banco-compartir-carousel-block::-webkit-scrollbar {
@@ -40,4 +41,19 @@
 }
 .banco-compartir-carousel-item-title{
     text-align: center;
+}
+.slick-next:before, .slick-prev:before {
+    content: none;
+}
+.slick-next{
+  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-right_mag.png) no-repeat;
+  background-size: 100% 100%;
+  width: 20px;
+  height: 26px;
+}
+.slick-prev{
+  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-left_mag.png) no-repeat;
+  background-size: 100% 100%;
+  width: 20px;
+  height: 26px;
 }
