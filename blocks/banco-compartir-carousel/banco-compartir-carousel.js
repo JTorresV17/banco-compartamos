@@ -24,7 +24,7 @@ export default function decorate(block) {
     script2.onload = () => {
       $(document).ready(function () {
         $('.banco-compartir-carousel-block').slick({
-          infinite: true,
+          infinite: false,
           slidesToShow: 3,
           slidesToScroll: 1
         });
