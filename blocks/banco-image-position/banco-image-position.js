@@ -2,10 +2,8 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const items = Array.from(block.children);
-
   const imageElement = items.shift();
   const textElement = items.shift();
-
   const imgElement = imageElement?.querySelector('img');
   const imgSrc = imgElement?.src || '';
   const imgAlt = imgElement?.alt || 'Image';
