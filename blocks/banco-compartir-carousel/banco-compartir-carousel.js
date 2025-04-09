@@ -25,14 +25,11 @@ export default function decorate(block) {
   block.appendChild(script1);
   block.appendChild(script2);
   block.appendChild(script3);
-}
-
-window.addEventListener('DOMContentLoaded', () => {
 
   $('.banco-compartir-carousel-block').slick({
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3
   });
-
-});
+  
+}
