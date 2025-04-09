@@ -20,10 +20,12 @@ export default function decorate(block) {
   block.appendChild(script1);
   block.appendChild(script2);
 
-  $('.banco-compartir-carousel-block').slick({
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 3
+  $(document).ready(function () {
+    $('.banco-compartir-carousel-block').slick({
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 3
+    });
   });
 
 }
