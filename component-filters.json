@@ -41,5 +41,11 @@
       "title",
       "banco-c-items"
     ]
+  },
+  {
+    "id": "banco-compartir-carousel",
+    "components": [
+      "carousel-slide"
+    ]
   }
 ]
