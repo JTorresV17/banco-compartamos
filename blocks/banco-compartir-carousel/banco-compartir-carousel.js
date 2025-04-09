@@ -44,7 +44,7 @@ export default function decorate(block) {
 
     // Deshabilitar o habilitar los botones según el índice
     prevButton.disabled = currentIndex === 0; // Deshabilitar "Prev" en el primer slide
-    nextButton.disabled = currentIndex === items.length - 1; // Deshabilitar "Next" en el último slide
+    nextButton.disabled = currentIndex === items.length - 3; // Deshabilitar "Next" en el último slide
   }
 
   prevButton.addEventListener('click', () => {
