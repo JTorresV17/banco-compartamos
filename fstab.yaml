@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p34631-e1321407.adobeaemcloud.com/bin/franklin.delivery/jtorresv17/banco-compartamos/main"
+    url: "https://author-p34631-e1321407.adobeaemcloud.com/bin/franklin.delivery/JTorresV17/banco-compartamos/main"
     type: "markup"
     suffix: ".html"
