@@ -17,6 +17,7 @@
 
 .text-container {
   flex: 0 0 50%;
+  flex-direction: column;
   max-width: 50%;
   display: flex;
   align-items: center;
