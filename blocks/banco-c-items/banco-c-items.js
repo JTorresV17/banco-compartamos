@@ -1,17 +1,12 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  console.log('Contenido inicial del bloque:', block.innerHTML);
   const rows = Array.from(block.children);
   block.classList.add('requisitos-bloque');
-
   const contentWrapper = document.createElement('div');
 
   rows.forEach((row, index) => {
     const cells = Array.from(row.children);
-
-    console.log(`Procesando fila ${index}:`, cells);
-
     const numeroEl = cells[0] || null;
     const colorTextoEl = cells[1] || null;
     const descripcionEl = cells[2] || null;
@@ -38,10 +33,8 @@ export default function decorate(block) {
       wrapper.appendChild(descripcion);
       contentWrapper.appendChild(wrapper);
     } else {
-      console.log('Algunas celdas están vacías o no existen');
     }
   });
-
   block.innerHTML = '';
   block.appendChild(contentWrapper);
 }
