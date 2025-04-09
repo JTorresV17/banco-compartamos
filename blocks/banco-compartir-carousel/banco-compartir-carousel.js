@@ -6,7 +6,6 @@ export default function decorate(block) {
 
   const carouselContainer = document.createElement('div');
   carouselContainer.className = 'banco-compartir-carousel-container';
-  block.append(carouselContainer);
 
   [...block.children].forEach((row) => {
     row.className = 'banco-compartir-carousel-item';
