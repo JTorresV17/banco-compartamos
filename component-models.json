@@ -285,10 +285,10 @@
         "multi": false
       },
       {
-        "component": "text",
+        "component": "richtext",
         "valueType": "string",
-        "name": "Categoria",
-        "label": "Categoria",
+        "name": "description",
+        "label": "Descripción",
         "value": ""
       }
     ]

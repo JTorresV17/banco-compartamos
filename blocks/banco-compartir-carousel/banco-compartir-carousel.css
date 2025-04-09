@@ -1,32 +1,32 @@
-.carrusel-cochez-categorias-block {
+.banco-compartir-carousel-block {
   display: flex;
   overflow-x: auto;
   gap: 10px;
 }	
 /* Un scrollbar negro con fondo gris */
-.carrusel-cochez-categorias-block::-webkit-scrollbar {
+.banco-compartir-carousel-block::-webkit-scrollbar {
     height: 3px;
     transition: all .3s;
 }
-.carrusel-cochez-categorias-block:hover .carrusel-cochez-categorias-block::-webkit-scrollbar{
+.banco-compartir-carousel-block:hover .banco-compartir-carousel-block::-webkit-scrollbar{
     height: 5px;
 }
-.carrusel-cochez-categorias-block::-webkit-scrollbar-track{
+.banco-compartir-carousel-block::-webkit-scrollbar-track{
     background-color: #cecac5;
     border-radius: 4px;
 }
-.carrusel-cochez-categorias-block::-webkit-scrollbar-thumb{
+.banco-compartir-carousel-block::-webkit-scrollbar-thumb{
     background-color: #000;
     border-radius: 4px;
 }
-.carrusel-cochez-categorias-item{
+.banco-compartir-carousel-item{
     flex: 0 0 170px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
 }
-.carrusel-cochez-categorias-item-image{
+.banco-compartir-carousel-item-image{
     width: 170px;
     height: 170px;
     display: flex;
@@ -35,11 +35,11 @@
     background: #f5f4f2;
     clip-path: circle(50%);
 }
-.carrusel-cochez-categorias-item-image img{
+.banco-compartir-carousel-item-image img{
     width: 100px;
     height: 100px;
     margin: 0 auto;
 }
-.carrusel-cochez-categorias-item-title{
+.banco-compartir-carousel-item-title{
     text-align: center;
 }

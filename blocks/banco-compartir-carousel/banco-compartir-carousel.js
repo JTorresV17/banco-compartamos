@@ -2,10 +2,10 @@
 export default function decorate(block) {
   console.log('Decorating block categories', block);
 
-  block.className = 'carrusel-cochez-categorias-block';
+  block.className = 'banco-compartir-carousel-block';
   [...block.children].forEach((row) => {
-    row.className = 'carrusel-cochez-categorias-item';
-    [...row.children][0].className = 'carrusel-cochez-categorias-item-image';
-    [...row.children][1].className = 'carrusel-cochez-categorias-item-title';
+    row.className = 'banco-compartir-carousel-item';
+    [...row.children][0].className = 'banco-compartir-carousel-item-image';
+    [...row.children][1].className = 'banco-compartir-carousel-item-title';
   });
 }
