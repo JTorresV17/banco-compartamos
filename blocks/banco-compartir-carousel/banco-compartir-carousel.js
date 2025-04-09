@@ -24,12 +24,9 @@ export default function decorate(block) {
     script2.onload = () => {
       $(document).ready(function () {
         $('.banco-compartir-carousel-block').slick({
-          dots: true,
-          infinite: false,
-          speed: 300,
-          slidesToShow: 1,
-          centerMode: true,
-          variableWidth: true
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 1
         });
       });
     };
