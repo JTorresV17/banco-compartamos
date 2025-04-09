@@ -1,9 +1,8 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-    console.log('Decorating block categories', block);
+console.log('Decorating block categories', block);
   const items = Array.from(block.children);
-
   const imageElement = items.shift();
   const titleElement = items.shift();
   const descriptionElement = items.shift();
