@@ -35,7 +35,7 @@ export default function decorate(block) {
   block.prepend(prevButton);
 
   function moveCarousel() {
-    console.log('Moving carousel to index:', currentIndex);
+    console.log('Moving carousel to index:', currentIndex, itemWidth);
 
     [...carouselContainer.children].forEach((item) => {
       item.style.transform = `translateX(-${currentIndex * itemWidth}px)`; 
