@@ -2,21 +2,9 @@
   width: 1070px;
   margin: 0 auto;
 }	
-/* Un scrollbar negro con fondo gris */
-.banco-compartir-carousel-block::-webkit-scrollbar {
-    height: 3px;
-    transition: all .3s;
-}
-.banco-compartir-carousel-block:hover .banco-compartir-carousel-block::-webkit-scrollbar{
-    height: 5px;
-}
-.banco-compartir-carousel-block::-webkit-scrollbar-track{
-    background-color: #cecac5;
-    border-radius: 4px;
-}
-.banco-compartir-carousel-block::-webkit-scrollbar-thumb{
-    background-color: #000;
-    border-radius: 4px;
+.banco-compartir-carousel-container{
+  display: flex;
+  overflow: hidden;
 }
 .banco-compartir-carousel-item{
     flex: 0 0 357px;
