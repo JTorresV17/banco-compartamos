@@ -14,5 +14,4 @@ export default function decorate(block) {
     [...row.children][1].className = 'banco-compartir-carousel-item-title';
   });
 
-  carouselContainer.append(...block.children);
 }
