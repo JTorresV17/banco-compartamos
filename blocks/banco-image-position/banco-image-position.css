@@ -21,10 +21,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ce0058;
+  background-color: var(--color-primary-principal);
 }
 
-.text-wrapper {
+.title-wrapper {
   text-align: center;
   color: #fff;
   font-size: 28px;
