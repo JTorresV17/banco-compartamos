@@ -1,6 +1,8 @@
 .banco-compartir-carousel-block {
   width: 1070px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
 }	
 .banco-compartir-carousel-section{
   display: flex;
@@ -28,9 +30,16 @@
     color: #83786f;
     line-height: 1.2;
 }
-.slick-next:hover, .slick-next:focus{
-  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-right_mag.png);
+
+.banco-compartir-carousel-button-prev,
+.banco-compartir-carousel-button-next{
+  width: 20px;
+  height: 27px;
 }
-.slick-prev:hover, .slick-prev:focus{
+
+.banco-compartir-carousel-button-prev{
   background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-left_mag.png);
+}
+.banco-compartir-carousel-button-next{
+  background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-right_mag.png);
 }

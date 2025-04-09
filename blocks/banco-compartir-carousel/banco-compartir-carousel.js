@@ -7,6 +7,14 @@ export default function decorate(block) {
   const carouselContainer = document.createElement('div');
   carouselContainer.className = 'banco-compartir-carousel-section';
 
+  const prevButton = document.createElement('button');
+  prevButton.className = 'banco-compartir-carousel-button-prev';
+  const nextButton = document.createElement('button');
+  nextButton.className = 'banco-compartir-carousel-button-next';
+
+  prevButton.className = 'banco-compartir-carousel-button-prev';
+  nextButton.className = 'banco-compartir-carousel-button-next';
+
   const items = [...block.children];
 
   items.forEach((row) => {
@@ -19,5 +27,7 @@ export default function decorate(block) {
 
   
   block.appendChild(carouselContainer);
+  block.appendChild(nextButton);
+  block.prepend(prevButton);
   
 }
