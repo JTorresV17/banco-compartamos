@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 .banco-compartir-carousel-item-image{
     width: 170px;
