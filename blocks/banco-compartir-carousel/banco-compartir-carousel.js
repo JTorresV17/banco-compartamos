@@ -17,6 +17,8 @@ export default function decorate(block) {
   prevButton.disabled = true;
 
   const items = [...block.children];
+  let currentIndex = 0; // Mantener el índice de la imagen actual
+  const itemWidth = items[0].offsetWidth; // Suponiendo que todos los items tienen el mismo tamaño
 
   items.forEach((row) => {
     row.className = 'banco-compartir-carousel-item';
@@ -31,11 +33,10 @@ export default function decorate(block) {
   block.appendChild(nextButton);
   block.prepend(prevButton);
 
-  let currentIndex = 0; // Mantener el índice de la imagen actual
-  const itemWidth = items[0].offsetWidth; // Suponiendo que todos los items tienen el mismo tamaño
-
   function moveCarousel() {
-    carouselContainer.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    [...carouselContainer.children].forEach((item) => {
+      item.style.transform = `translateX(-${currentIndex * itemWidth}px)`; 
+    });
 
     // Deshabilitar o habilitar los botones según el índice
     prevButton.disabled = currentIndex === 0; // Deshabilitar "Prev" en el primer slide
