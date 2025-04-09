@@ -18,7 +18,7 @@ export default function decorate(block) {
 
   const items = [...block.children];
   let currentIndex = 0; // Mantener el índice de la imagen actual
-  const itemWidth = items[0].offsetWidth; // Suponiendo que todos los items tienen el mismo tamaño
+  
 
   items.forEach((row) => {
     row.className = 'banco-compartir-carousel-item';
@@ -28,12 +28,15 @@ export default function decorate(block) {
     carouselContainer.appendChild(row);
   });
 
+  const itemWidth = items[0].offsetWidth; // Suponiendo que todos los items tienen el mismo tamaño
   
   block.appendChild(carouselContainer);
   block.appendChild(nextButton);
   block.prepend(prevButton);
 
   function moveCarousel() {
+    console.log('Moving carousel to index:', currentIndex);
+
     [...carouselContainer.children].forEach((item) => {
       item.style.transform = `translateX(-${currentIndex * itemWidth}px)`; 
     });
