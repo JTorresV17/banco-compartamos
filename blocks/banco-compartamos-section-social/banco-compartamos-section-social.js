@@ -1,82 +1,52 @@
 export default function decorate(block) {
-    console.log('Decorating block section social', block);
+    console.log('Decorating block categories', block); // Ver los datos del bloque en la consola
+
     const container = document.createElement('div');
     container.className = 'banco-compartir-ui_section banco-compartir-ui_section--25 banco-compartir-rw-section-links-social';
 
-    const box = document.createElement('div');
-    box.className = 'banco-compartir-ui_section__box';
+    const fields = block.dataset; // Obtenemos los datos del bloque
 
-    const ul = document.createElement('ul');
-    ul.className = 'banco-compartir-ul_list_social banco-compartir-ui_w_635';
+    console.log('Fields data:', fields);  // Log para verificar los datos que llegan
 
-    const fields = block.dataset; // Obtiene los datos del modelo Franklin
-
-    // Crear el enlace de Política de privacidad
+    // Mostrar el texto de la Política de privacidad con su enlace
     if (fields.politicaPrivacidad && fields.politicaPrivacidadLink) {
-        const li = document.createElement('li');
-        li.className = 'banco-compartir-ul_list_social__li';
-        const a = document.createElement('a');
-        a.href = fields.politicaPrivacidadLink;
-        a.target = '_blank';
-        a.className = 'banco-compartir-ul_list_social__a banco-compartir-ui_fs_14';
-        a.innerHTML = `<span class="banco-compartir-ul_list_social__text">${fields.politicaPrivacidad}</span>`;
-        li.appendChild(a);
-        ul.appendChild(li);
+        const policyLink = document.createElement('a');
+        policyLink.href = fields.politicaPrivacidadLink;
+        policyLink.target = '_blank';
+        policyLink.className = 'banco-compartir-ui_fs_14';
+        policyLink.innerHTML = fields.politicaPrivacidad;  // Mostrar el texto de la política de privacidad
+        container.appendChild(policyLink);
     }
 
-    // Crear el enlace de Términos y condiciones
+    // Mostrar el texto de Términos y condiciones con su enlace
     if (fields.terminosCondiciones && fields.terminosCondicionesLink) {
-        const li = document.createElement('li');
-        li.className = 'banco-compartir-ul_list_social__li';
-        const a = document.createElement('a');
-        a.href = fields.terminosCondicionesLink;
-        a.target = '_blank';
-        a.className = 'banco-compartir-ul_list_social__a banco-compartir-ui_fs_14';
-        a.innerHTML = `<span class="banco-compartir-ul_list_social__text">${fields.terminosCondiciones}</span>`;
-        li.appendChild(a);
-        ul.appendChild(li);
+        const termsLink = document.createElement('a');
+        termsLink.href = fields.terminosCondicionesLink;
+        termsLink.target = '_blank';
+        termsLink.className = 'banco-compartir-ui_fs_14';
+        termsLink.innerHTML = fields.terminosCondiciones;  // Mostrar el texto de los términos y condiciones
+        container.appendChild(termsLink);
     }
 
-    // Crear el enlace de Facebook
-    if (fields.facebookTexto && fields.facebookUrl && fields.iconoFacebook) {
-        const li = document.createElement('li');
-        li.className = 'banco-compartir-ul_list_social__li';
-        const a = document.createElement('a');
-        a.href = fields.facebookUrl;
-        a.target = '_blank';
-        a.className = 'banco-compartir-ul_list_social__a banco-compartir-ui_fs_14';
-
-        const div = document.createElement('div');
-        div.className = 'banco-compartir-ul_list_social__image';
-        div.style.backgroundImage = `url(${fields.iconoFacebook})`;  // Usar la URL de la imagen de Facebook
-        a.appendChild(div);
-
-        a.innerHTML += `<span class="banco-compartir-ul_list_social__text">${fields.facebookTexto}</span>`;  // Usar el texto de Facebook
-        li.appendChild(a);
-        ul.appendChild(li);
+    // Mostrar el texto de Facebook con su enlace
+    if (fields.facebookTexto && fields.facebookUrl) {
+        const facebookLink = document.createElement('a');
+        facebookLink.href = fields.facebookUrl;
+        facebookLink.target = '_blank';
+        facebookLink.className = 'banco-compartir-ui_fs_14';
+        facebookLink.innerHTML = fields.facebookTexto;  // Mostrar el texto de Facebook
+        container.appendChild(facebookLink);
     }
 
-    // Crear el enlace de Teléfono
-    if (fields.telefonoTexto && fields.telefonoLink && fields.iconoTelefono) {
-        const li = document.createElement('li');
-        li.className = 'banco-compartir-ul_list_social__li';
-        const a = document.createElement('a');
-        a.href = fields.telefonoLink;  // Usar el enlace tel:
-        a.className = 'banco-compartir-ul_list_social__a banco-compartir-ui_td_none banco-compartir-ui_fs_14';
-
-        const div = document.createElement('div');
-        div.className = 'banco-compartir-ul_list_social__image';
-        div.style.backgroundImage = `url(${fields.iconoTelefono})`;  // Usar la URL de la imagen del teléfono
-        a.appendChild(div);
-
-        a.innerHTML += `<span class="banco-compartir-ul_list_social__text">${fields.telefonoTexto}</span>`;  // Usar el texto del teléfono
-        li.appendChild(a);
-        ul.appendChild(li);
+    // Mostrar el texto de Teléfono con su enlace
+    if (fields.telefonoTexto && fields.telefonoLink) {
+        const phoneLink = document.createElement('a');
+        phoneLink.href = fields.telefonoLink;  // Enlace `tel:`
+        phoneLink.className = 'banco-compartir-ui_fs_14';
+        phoneLink.innerHTML = fields.telefonoTexto;  // Mostrar el texto del teléfono
+        container.appendChild(phoneLink);
     }
 
-    box.appendChild(ul);
-    container.appendChild(box);
-
-    block.textContent = '';
-    block.appendChild(container);
+    block.textContent = ''; // Limpiar el contenido original del bloque
+    block.appendChild(container); // Añadir el nuevo contenedor con los enlaces
 }
