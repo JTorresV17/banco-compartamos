@@ -36,6 +36,9 @@ export default function decorate(block) {
   moveInstrumentation(titleElement, titleElement);
   moveInstrumentation(descriptionElement, descriptionElement);
 
+  // Declarar el checkboxWrapper primero para evitar el error
+  let checkboxWrapper;
+
   // Función para renderizar el orden basado en el estado del checkbox
   const renderLayout = (isVariationChecked) => {
     container.innerHTML = '';
@@ -47,13 +50,12 @@ export default function decorate(block) {
       container.appendChild(textContainer);
     }
 
-    if (isEditMode) {
+    if (isEditMode && checkboxWrapper) {
       container.appendChild(checkboxWrapper);
     }
   };
 
   // Si estamos en modo edición, crear checkbox
-  let checkboxWrapper;
   if (isEditMode) {
     checkboxWrapper = document.createElement('div');
     checkboxWrapper.style.marginTop = '1rem';
