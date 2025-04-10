@@ -18,6 +18,7 @@ export default function decorate(block) {
 
   block.appendChild(button);
 
-
-
+  button.addEventListener('click', () => {
+    window.open(urlText, '_blank');
+  });
 }
