@@ -6,8 +6,10 @@ export default function decorate(block) {
   const urlContainer = [...block.children].firstElementChild;
   const contentContainer = [...block.children].lastElementChild;
 
-  const url = urlContainer.textContent.trim();
-  const content = contentContainer.textContent.trim();
+  const url = urlContainer.textContent;
+  const content = contentContainer.textContent;
+  
+  console.log('Button content:', content, 'URL:', url);
 
   block.removeChild(urlContainer);
   block.removeChild(contentContainer);
@@ -15,8 +17,6 @@ export default function decorate(block) {
   const button = document.createElement('div');
   button.className = 'banco-compartir-button-div';
   button.textContent = content;
-
-  console.log('Button content:', content, 'URL:', url);
 
   button.addEventListener('click', () => {
     window.location.href = url;
