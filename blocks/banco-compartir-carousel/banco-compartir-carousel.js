@@ -4,6 +4,8 @@ export default function decorate(block) {
 
   block.className = 'banco-compartir-carousel-block';
 
+  const carouselBlocks = document.querySelectorAll('.banco-compartir-carousel-wrapper');
+
   const carouselContainer = document.createElement('div');
   carouselContainer.className = 'banco-compartir-carousel-section';
 
@@ -20,9 +22,10 @@ export default function decorate(block) {
   const firstChild = block.firstElementChild; 
   firstChild.className = 'banco-compartir-carousel-title';
   block.removeChild(firstChild); 
-
-  const targetNode = document.body;
-  targetNode.insertBefore(firstChild, targetNode.firstChild);
+  carouselBlocks.forEach((carouselBlock) => {
+    carouselBlock.appendChild(carouselBlock.querySelector('.banco-compartir-carousel-title'));
+  });
+  
  
   console.log('firstChild', firstChild);
 
@@ -40,6 +43,7 @@ export default function decorate(block) {
   block.appendChild(carouselContainer);
   block.appendChild(nextButton);
   block.prepend(prevButton);
+
 
   const itemWidth = 357; 
 
