@@ -3,8 +3,8 @@ export default function decorate(block) {
 
   block.className = 'banco-compartir-button-block';
 
-  const url = [...block.children].firstElementChild;
-  const content = [...block.children].lastElementChild;
+  const url = block.firstElementChild;
+  const content = block.lastElementChild;
 
   console.log({
     url: url,
