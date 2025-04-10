@@ -28,7 +28,7 @@
     border-radius: 50%;
 }
 
-.banco-compartir-ui_fs_14 .banco-compartir-link-container a{
+.banco-compartir-link-container a{
     color: var(--text-light-color);
     text-decoration: underline;
     font-size: var(--al-font-size-lg);
