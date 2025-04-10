@@ -65,10 +65,10 @@ export default function decorate(block) {
 
         const div = document.createElement('div');
         div.className = 'banco-compartir-ul_list_social__image';
-        div.style.backgroundImage = `url(${fields.iconoTelefono})`;  // Usar la URL de la imagen del teléfono
+        div.style.backgroundImage = `url(${fields.iconoTelefono})`;
         a.appendChild(div);
 
-        a.innerHTML += `<span class="banco-compartir-ul_list_social__text">${fields.telefonoTexto}</span>`;  // Usar el texto del teléfono
+        a.innerHTML += `<span class="banco-compartir-ul_list_social__text">${fields.telefonoTexto}</span>`;
         li.appendChild(a);
         ul.appendChild(li);
     }
