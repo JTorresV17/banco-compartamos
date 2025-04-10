@@ -2,17 +2,20 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const items = Array.from(block.children);
-
+  
+  // Extraemos los elementos de imagen, título y descripción
   const imageElement = items.shift();
   const titleElement = items.shift();
   const descriptionElement = items.shift();
 
+  // Obtener la fuente y el texto
   const imgElement = imageElement?.querySelector('img');
   const imgSrc = imgElement?.src || '';
   const imgAlt = imgElement?.alt || 'Image';
   const titleContent = titleElement?.textContent.trim() || '';
   const descriptionContent = descriptionElement?.textContent.trim() || '';
 
+  // Crear la estructura para la imagen y el texto
   const container = document.createElement('div');
   container.classList.add('image-text-container');
 
@@ -41,13 +44,23 @@ export default function decorate(block) {
   moveInstrumentation(titleElement, titleWrapper);
   moveInstrumentation(descriptionElement, descriptionWrapper);
 
-  container.appendChild(imageWrapper);
-  container.appendChild(textContainer);
+  // Asegurarse de que el orden de los elementos solo se cambie en AEM Author
+  if (block.getAttribute('data-aue-type') === 'component') {
+    container.addEventListener('click', () => {
+      // Mover la imagen y el texto en el DOM
+      const imageWrapperClone = imageWrapper.cloneNode(true);
+      const textContainerClone = textContainer.cloneNode(true);
 
-  // Cambiar el orden (de imagen a texto) al hacer clic
-  container.addEventListener('click', () => {
-    container.classList.toggle('reversed'); // Cambiar el orden de los elementos
-  });
+      // Mover los elementos dentro del contenedor
+      container.innerHTML = '';
+      container.appendChild(textContainerClone);
+      container.appendChild(imageWrapperClone);
+    });
+  } else {
+    // Si no estamos en Author, solo agregamos los elementos al contenedor sin movimiento
+    container.appendChild(imageWrapper);
+    container.appendChild(textContainer);
+  }
 
   block.innerHTML = '';
   block.appendChild(container);
