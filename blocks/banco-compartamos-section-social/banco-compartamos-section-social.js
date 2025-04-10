@@ -1,35 +1,55 @@
 export default function decorate(block) {
-    // Asignamos el contenedor principal con su clase
+    // Crear el contenedor principal
     const container = document.createElement('div');
     container.className = 'banco-compartir-ui_section';
 
-    // Asignamos el subcontenedor con su clase
+    // Crear el subcontenedor
     const subContainer = document.createElement('div');
     subContainer.className = 'banco-compartir-ui_section__subcontainer';
 
-    // Ahora usaremos el bloque de AEM para obtener directamente los datos y asignarlos
-    // Añadimos los enlaces y valores de texto usando los valores directamente del bloque AEM
+    // Crear los enlaces con sus clases
+    const politicaLink = document.createElement('a');
+    politicaLink.href = block.politicaPrivacidadLink || '#';
+    politicaLink.className = 'banco-compartir-ui_fs_14';
+    politicaLink.textContent = block.politicaPrivacidad || 'Política de Privacidad';
 
-    container.innerHTML = `
-        <div class="banco-compartir-link-container">
-            <a href="${block.politicaPrivacidadLink || '#'}" target="_blank" class="banco-compartir-ui_fs_14">${block.politicaPrivacidad || 'Política de Privacidad'}</a>
-        </div>
-        <div class="banco-compartir-link-container">
-            <a href="${block.terminosCondicionesLink || '#'}" target="_blank" class="banco-compartir-ui_fs_14">${block.terminosCondiciones || 'Términos y Condiciones'}</a>
-        </div>
-        <div class="banco-compartir-link-container">
-            <a href="${block.facebookUrl || '#'}" target="_blank" class="banco-compartir-ui_fs_14">${block.facebookTexto || 'Síguenos en Facebook'}</a>
-            <img src="${block.iconoFacebook || '/path/to/default-facebook-icon.png'}" alt="Facebook Icon" class="banco-compartir-icon">
-        </div>
-        <div class="banco-compartir-link-container">
-            <a href="${block.telefonoLink || '#'}" class="banco-compartir-ui_fs_14">${block.telefonoTexto || 'Llama al 123-456-789'}</a>
-            <img src="${block.iconoTelefono || '/path/to/default-phone-icon.png'}" alt="Phone Icon" class="banco-compartir-icon">
-        </div>
-    `;
+    const terminosLink = document.createElement('a');
+    terminosLink.href = block.terminosCondicionesLink || '#';
+    terminosLink.className = 'banco-compartir-ui_fs_14';
+    terminosLink.textContent = block.terminosCondiciones || 'Términos y Condiciones';
 
-    // Añadimos el subcontenedor con el contenido al contenedor principal
-    subContainer.appendChild(container);
+    const facebookLink = document.createElement('a');
+    facebookLink.href = block.facebookUrl || '#';
+    facebookLink.className = 'banco-compartir-ui_fs_14';
+    facebookLink.textContent = block.facebookTexto || 'Síguenos en Facebook';
 
-    // Añadimos el contenedor final al bloque de AEM
-    block.appendChild(subContainer);
+    const telefonoLink = document.createElement('a');
+    telefonoLink.href = block.telefonoLink || '#';
+    telefonoLink.className = 'banco-compartir-ui_fs_14';
+    telefonoLink.textContent = block.telefonoTexto || 'Llama al 123-456-789';
+
+    // Crear los iconos y asignar las clases a las imágenes
+    const facebookIcon = document.createElement('img');
+    facebookIcon.src = block.iconoFacebook || '/path/to/default-facebook-icon.png';
+    facebookIcon.alt = 'Facebook Icon';
+    facebookIcon.className = 'banco-compartir-icon';
+
+    const telefonoIcon = document.createElement('img');
+    telefonoIcon.src = block.iconoTelefono || '/path/to/default-phone-icon.png';
+    telefonoIcon.alt = 'Phone Icon';
+    telefonoIcon.className = 'banco-compartir-icon';
+
+    // Añadir los enlaces y iconos al subcontenedor
+    subContainer.appendChild(politicaLink);
+    subContainer.appendChild(terminosLink);
+    subContainer.appendChild(facebookLink);
+    subContainer.appendChild(facebookIcon);
+    subContainer.appendChild(telefonoLink);
+    subContainer.appendChild(telefonoIcon);
+
+    // Añadir el subcontenedor al contenedor principal
+    container.appendChild(subContainer);
+
+    // Añadir el contenedor completo al bloque
+    block.appendChild(container);
 }
