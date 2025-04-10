@@ -15,9 +15,11 @@
   --color-primary-principal: #CE005D;
   --color-primary-items: #ffa300;
   --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
+
+  --text-light-color: #fff;
+  --text-primary-color: #CE005D;
+  --text-dark-color: #131313;
+  
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
@@ -25,10 +27,22 @@
   --body-font-family: roboto, roboto-fallback, sans-serif;
   --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  --font-Bree-Bold: "Bree-Bold";
+  --font-Bree-Light: "Bree-Light";
+  
+
+  /* font sizes */
+  --al-font-size-xs: 8px;
+  --al-font-size-sm: 10px;
+  --al-font-size-md: 12px;
+  --al-font-size-xl: 16px;
+  --al-font-size-lg: 14px;
+  --al-font-size-x3: 20px;
+  --al-font-size-x2: 18px;
+  --al-font-size-x5: 28px;
+  --al-font-size-x4: 24px;
+  --al-font-size-x6: 32px;
+  --al-font-size-x7: 40px;
 
   /* heading sizes */
   --heading-font-size-xxl: 55px;

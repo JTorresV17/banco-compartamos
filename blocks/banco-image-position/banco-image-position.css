@@ -13,6 +13,7 @@
 .image-wrapper img {
   width: 100%;
   min-height: 100%;
+  overflow: hidden;
 }
 
 .text-container {
@@ -22,11 +23,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primary-principal);
 }
 
 .title-wrapper {
   text-align: center;
-  color: #fff;
-  font-size: 28px;
+  color: var(--text-light-color);
+  font-size: var(--al-font-size-x5);
+}
+
+.description-wrapper{
+  color: var(--text-light-color);
+  font-size: var(--al-font-size-x5);
 }
