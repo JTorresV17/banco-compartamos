@@ -20,7 +20,7 @@ export default function decorate(block) {
   const firstChild = block.firstElementChild; 
   firstChild.className = 'banco-compartir-carousel-title';
   block.removeChild(firstChild); 
-  block.parentNode.insertBefore(firstChild, block);
+  // block.parentNode.insertBefore(firstChild, block);
  
   console.log('firstChild', firstChild);
 
