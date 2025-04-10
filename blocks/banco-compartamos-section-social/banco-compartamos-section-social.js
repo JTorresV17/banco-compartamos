@@ -1,45 +1,51 @@
 export default function decorate(block) {
-    console.log("block decorated social", block);
-    const sectionContainer = block.querySelector('.banco-compartir-ui_section');
-    sectionContainer.classList.add('banco-compartir-ui_section'); // Asignamos la clase al contenedor principal
-
-    // Encontramos el subcontenedor
+    // Encontramos el contenedor principal y el subcontenedor
+    const container = block.querySelector('.banco-compartamos-section-social');
+    const sectionContainer = container.querySelector('.banco-compartir-ui_section');
     const subContainer = sectionContainer.querySelector('.banco-compartir-ui_section__subcontainer');
-    subContainer.classList.add('banco-compartir-ui_section__subcontainer'); // Asignamos la clase al subcontenedor
 
-    // Asignamos clases a los elementos existentes dentro de la sección
-    const linkContainers = block.querySelectorAll('div > div > p');
-    
-    linkContainers.forEach((item) => {
-        const parentDiv = item.parentElement;
+    // Asignar las clases a los divs ya existentes
+    sectionContainer.classList.add('banco-compartir-ui_section'); // Clase para la sección principal
+    subContainer.classList.add('banco-compartir-ui_section__subcontainer'); // Clase para el subcontenedor
 
-        if (item.dataset.aueProp === 'politicaPrivacidad') {
-            parentDiv.classList.add('banco-compartir-link-container');
-            const link = item.querySelector('a');
-            if (link) {
-                link.classList.add('banco-compartir-ui_fs_14');
+    // Asignar la clase "banco-compartir-link-container" a los divs que contienen los enlaces o textos
+    const divs = container.querySelectorAll('div > div'); // Encontrar todos los divs dentro del bloque
+
+    divs.forEach((div) => {
+        const p = div.querySelector('p'); // Buscar el p dentro de cada div
+        if (p) {
+            if (p.dataset.aueProp === 'politicaPrivacidad') {
+                // Si es el texto de Política de Privacidad, convertimos el p en un enlace
+                const link = document.createElement('a');
+                link.href = p.dataset.aueProp; // Asumimos que la URL del enlace es el valor de data-aue-prop (esto puede ajustarse)
+                link.className = 'banco-compartir-ui_fs_14';
+                link.textContent = p.textContent; // El texto original
+                div.innerHTML = ''; // Limpiamos el p original
+                div.appendChild(link); // Agregamos el enlace
+                div.classList.add('banco-compartir-link-container');
             }
-        }
 
-        if (item.dataset.aueProp === 'terminosCondiciones') {
-            parentDiv.classList.add('banco-compartir-link-container');
-            const link = item.querySelector('a');
-            if (link) {
-                link.classList.add('banco-compartir-ui_fs_14');
+            if (p.dataset.aueProp === 'terminosCondiciones') {
+                // Si es el texto de Términos y Condiciones, convertimos el p en un enlace
+                const link = document.createElement('a');
+                link.href = p.dataset.aueProp;
+                link.className = 'banco-compartir-ui_fs_14';
+                link.textContent = p.textContent;
+                div.innerHTML = '';
+                div.appendChild(link);
+                div.classList.add('banco-compartir-link-container');
             }
-        }
 
-        if (item.dataset.aueProp === 'facebookTexto') {
-            parentDiv.classList.add('banco-compartir-link-container');
-            const link = item.querySelector('a');
-            if (link) {
-                link.classList.add('banco-compartir-ui_fs_14');
+            if (p.dataset.aueProp === 'facebookTexto') {
+                // Si es el texto de Facebook, convertimos el p en un enlace
+                const link = document.createElement('a');
+                link.href = p.dataset.aueProp;
+                link.className = 'banco-compartir-ui_fs_14';
+                link.textContent = p.textContent;
+                div.innerHTML = '';
+                div.appendChild(link);
+                div.classList.add('banco-compartir-link-container');
             }
-        }
-
-        // Si es un campo sin texto, lo dejamos vacío (podría ser útil para personalización)
-        if (!item.dataset.aueProp) {
-            parentDiv.classList.add('banco-compartir-link-container');
         }
     });
 }
