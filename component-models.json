@@ -225,7 +225,7 @@
         "component": "text",
         "valueType": "string",
         "name": "variacion",
-        "label": "Variación imagen lado derecho(Escribir |cambiar|))",
+        "label": "Variación, escribir cambiar en el campo)",
         "value": ""
       }
     ]
