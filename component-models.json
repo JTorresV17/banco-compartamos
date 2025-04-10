@@ -383,20 +383,16 @@
     "id": "banco-compartir-button",
     "fields": [
       {
-        "component": "text",
-        "name": "linkUrl",
-        "label": "Enlace",
-        "valueType": "string"
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
       },
       {
         "component": "text",
-        "name": "linkText",
-        "label": "Contenido"
-      },
-      {
-        "component": "text",
-        "name": "linkTitle",
-        "label": "Titulo"
+        "valueType": "string",
+        "name": "text",
+        "label": "Texto",
+        "value": ""
       }
     ]
   }
