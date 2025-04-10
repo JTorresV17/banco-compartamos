@@ -58,3 +58,11 @@ button[disabled]{
 .banco-compartir-carousel-button-prev:focus{
   background-color: transparent;
 }
+.banco-compartir-carousel-title{
+  text-align: center;
+  color: var(--color-primary-principal);
+  font-size: var(--al-font-size-x6);
+  line-height: var(--al-font-size-x6);
+  margin-bottom: 35px;
+  font-weight: bold;
+}
