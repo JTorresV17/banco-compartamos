@@ -1,0 +1,11 @@
+.banco-compartir-button-cta{
+  padding: 8px 20px;
+  background-color: var(--color-primary-princcipal);
+  color: var(--text-light-color);
+  font-weight: bold;
+  font-size: var(--al-font-size-x3);
+  height: var(--heading-font-size-xl);
+  width: 350px;
+  border-radius: var(--al-font-size-xs);
+  margin: 0 auto;
+}
