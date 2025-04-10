@@ -383,9 +383,15 @@
     "id": "banco-compartir-button",
     "fields": [
       {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Link"
+        "component": "text",
+        "name": "linkUrl",
+        "label": "Enlace",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "linkBackgroundColor",
+        "label": "Color de fondo del enlace"
       },
       {
         "component": "text",
