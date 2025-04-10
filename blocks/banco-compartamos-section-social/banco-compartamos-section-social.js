@@ -1,15 +1,11 @@
 export default function decorate(block) {
-    console.log('Decorating block categories', block);  // Ver los datos del bloque
-
-    // Creamos un contenedor principal para los enlaces
     const container = document.createElement('div');
     container.className = 'banco-compartir-ui_section banco-compartir-ui_section--25 banco-compartir-rw-section-links-social';
 
-    // Creamos un sub-div que contendrá los enlaces
     const subContainer = document.createElement('div');
-    subContainer.className = 'banco-compartir-ui_section__subcontainer'; // Clase para el sub div
+    subContainer.className = 'banco-compartir-ui_section__subcontainer'; // Sub contenedor
 
-    // Leer los datos directamente desde los campos editados en AEM
+    // Verifica si el campo de Política de Privacidad está presente
     const politicaPrivacidadText = block.querySelector('[data-aue-prop="politicaPrivacidad"]');
     const politicaPrivacidadLink = block.querySelector('[data-aue-prop="politicaPrivacidadLink"]');
     if (politicaPrivacidadText && politicaPrivacidadLink) {
@@ -26,7 +22,7 @@ export default function decorate(block) {
         subContainer.appendChild(policyLinkContainer);
     }
 
-    // Términos y condiciones
+    // Repite lo mismo para Términos y Condiciones
     const terminosCondicionesText = block.querySelector('[data-aue-prop="terminosCondiciones"]');
     const terminosCondicionesLink = block.querySelector('[data-aue-prop="terminosCondicionesLink"]');
     if (terminosCondicionesText && terminosCondicionesLink) {
@@ -93,9 +89,7 @@ export default function decorate(block) {
     // Añadimos el sub-container con los enlaces dentro del contenedor principal
     container.appendChild(subContainer);
 
-    // Añadimos todo al bloque
-    block.textContent = '';  // Limpiar el contenido original del bloque
-    block.appendChild(container);  // Agregar el contenedor con los enlaces e iconos
-
-    console.log('Block after decoration:', block);  // Mostrar el bloque después de la decoración
+    // Limpiamos el contenido original del bloque y agregamos el nuevo contenedor
+    block.textContent = '';
+    block.appendChild(container);
 }
