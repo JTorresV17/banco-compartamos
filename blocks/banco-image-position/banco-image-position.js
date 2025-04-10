@@ -1,82 +1,62 @@
-import { moveInstrumentation } from '../../scripts/scripts.js';
-
 export default function decorate(block) {
-  const items = Array.from(block.children);
-  const imageElement = items[0];
-  const titleElement = items[1];
-  const descriptionElement = items[2];
-
-  const imgElement = imageElement?.querySelector('img');
-  const imgSrc = imgElement?.src || '';
-
-  const container = document.createElement('div');
-  container.classList.add('image-text-container');
-
-  const isEditMode = document.body.classList.contains('aem-Authoring');
-
-  // Crear wrapper de imagen
-  const imageWrapper = document.createElement('div');
-  imageWrapper.classList.add('image-wrapper');
-  const image = document.createElement('img');
-  image.src = imgSrc;
-  imageWrapper.appendChild(image);
-
-  // Crear contenedor de texto
-  const textContainer = document.createElement('div');
-  textContainer.classList.add('text-container');
-
-  titleElement.classList.add('title-wrapper');
-  descriptionElement.classList.add('description-wrapper');
-
-  textContainer.appendChild(titleElement);
-  textContainer.appendChild(descriptionElement);
-
-  // Instrumentación
-  moveInstrumentation(imageElement, imageWrapper);
-  moveInstrumentation(titleElement, titleElement);
-  moveInstrumentation(descriptionElement, descriptionElement);
-
-  // Función para renderizar el orden basado en el estado del checkbox
-  const renderLayout = (isVariationChecked) => {
-    container.innerHTML = '';
-    if (isVariationChecked) {
+    const container = document.createElement('div');
+    container.className = 'image-text-container';
+  
+    const imageWrapper = document.createElement('div');
+    imageWrapper.className = 'image-wrapper';
+  
+    const textContainer = document.createElement('div');
+    textContainer.className = 'text-container';
+  
+    const titleWrapper = document.createElement('div');
+    titleWrapper.className = 'title-wrapper';
+  
+    const descriptionWrapper = document.createElement('div');
+    descriptionWrapper.className = 'description-wrapper';
+  
+    const children = [...block.children];
+  
+    if (children[0]) {
+      const image = children[0].querySelector('img');
+      if (image) {
+        image.setAttribute('data-move-instrumentation', 'true'); // ← importante
+        imageWrapper.appendChild(image);
+      }
+    }
+  
+    // Dejar los campos como contenteditable para que funcionen con el editor
+    if (children[1]) {
+      titleWrapper.innerHTML = children[1].innerHTML;
+      titleWrapper.setAttribute('contenteditable', 'true');
+    }
+  
+    if (children[2]) {
+      descriptionWrapper.innerHTML = children[2].innerHTML;
+      descriptionWrapper.setAttribute('contenteditable', 'true');
+    }
+  
+    // Campo 3: texto de control para cambiar orden
+    let cambiarOrden = false;
+    if (children[3]) {
+      const triggerText = children[3].textContent.trim().toLowerCase();
+      if (triggerText === 'cambiar') {
+        cambiarOrden = true;
+      }
+    }
+  
+    textContainer.appendChild(titleWrapper);
+    textContainer.appendChild(descriptionWrapper);
+  
+    // Orden condicional
+    if (cambiarOrden) {
       container.appendChild(textContainer);
       container.appendChild(imageWrapper);
     } else {
       container.appendChild(imageWrapper);
       container.appendChild(textContainer);
     }
-
-    if (isEditMode) {
-      container.appendChild(checkboxWrapper);
-    }
-  };
-
-  // Si estamos en modo edición, crear checkbox
-  let checkboxWrapper;
-  if (isEditMode) {
-    checkboxWrapper = document.createElement('div');
-    checkboxWrapper.style.marginTop = '1rem';
-    checkboxWrapper.style.textAlign = 'center';
-
-    const label = document.createElement('label');
-    label.textContent = 'Variación ';
-    label.style.color = '#fff';
-    label.style.fontSize = '14px';
-
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-
-    checkbox.addEventListener('change', () => {
-      renderLayout(checkbox.checked);
-    });
-
-    label.appendChild(checkbox);
-    checkboxWrapper.appendChild(label);
+  
+    block.textContent = '';
+    block.appendChild(container);
   }
-
-  // Render inicial
-  renderLayout(false);
-  block.innerHTML = '';
-  block.appendChild(container);
-}
+  
