@@ -168,6 +168,81 @@
     ]
   },
   {
+    "id": "banco-compartamos-section-social",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "politicaPrivacidad",
+        "label": "Texto de Política de Privacidad",
+        "value": "Política de privacidad"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "politicaPrivacidadLink",
+        "label": "Enlace de Política de Privacidad",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "terminosCondiciones",
+        "label": "Texto de Términos y Condiciones",
+        "value": "Términos y condiciones"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "terminosCondicionesLink",
+        "label": "Enlace de Términos y Condiciones",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "facebookUrl",
+        "label": "Enlace de Facebook",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "facebookTexto",
+        "label": "Texto de Facebook",
+        "value": "compartamosfinancierasa"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "iconoFacebook",
+        "label": "Icono de Facebook",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "telefono",
+        "label": "Número de Teléfono",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "telefonoTexto",
+        "label": "Texto de Teléfono",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "iconoTelefono",
+        "label": "Icono de Teléfono",
+        "multi": false
+      }
+    ]
+  },
+  {
     "id": "banco-compartir-carousel",
     "fields": [
       {
