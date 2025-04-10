@@ -1,48 +1,35 @@
 export default function decorate(block) {
-    // Crear el contenedor principal
+    // Asignamos el contenedor principal con su clase
     const container = document.createElement('div');
     container.className = 'banco-compartir-ui_section';
 
-    // Crear el subcontenedor donde se colocarán los enlaces
+    // Asignamos el subcontenedor con su clase
     const subContainer = document.createElement('div');
     subContainer.className = 'banco-compartir-ui_section__subcontainer';
 
-    // Recuperar los valores desde AEM usando los atributos `data-aue-prop`
-    const politicaPrivacidad = block.querySelector('[data-aue-prop="politicaPrivacidad"]')?.textContent || 'Política de Privacidad';
-    const politicaPrivacidadLink = block.querySelector('[data-aue-prop="politicaPrivacidadLink"]')?.textContent || '#';
+    // Ahora usaremos el bloque de AEM para obtener directamente los datos y asignarlos
+    // Añadimos los enlaces y valores de texto usando los valores directamente del bloque AEM
 
-    const terminosCondiciones = block.querySelector('[data-aue-prop="terminosCondiciones"]')?.textContent || 'Términos y Condiciones';
-    const terminosCondicionesLink = block.querySelector('[data-aue-prop="terminosCondicionesLink"]')?.textContent || '#';
-
-    const facebookTexto = block.querySelector('[data-aue-prop="facebookTexto"]')?.textContent || 'Síguenos en Facebook';
-    const facebookUrl = block.querySelector('[data-aue-prop="facebookUrl"]')?.textContent || '#';
-    const iconoFacebook = block.querySelector('[data-aue-prop="iconoFacebook"]')?.src || '/path/to/default-facebook-icon.png';
-
-    const telefonoTexto = block.querySelector('[data-aue-prop="telefonoTexto"]')?.textContent || 'Llama al 123-456-789';
-    const telefonoLink = block.querySelector('[data-aue-prop="telefonoLink"]')?.textContent || 'tel:123456789';
-    const iconoTelefono = block.querySelector('[data-aue-prop="iconoTelefono"]')?.src || '/path/to/default-phone-icon.png';
-
-    // Insertar los valores dinámicamente en la estructura HTML utilizando solo JS
     container.innerHTML = `
         <div class="banco-compartir-link-container">
-            <a href="${politicaPrivacidadLink}" target="_blank" class="banco-compartir-ui_fs_14">${politicaPrivacidad}</a>
+            <a href="${block.politicaPrivacidadLink || '#'}" target="_blank" class="banco-compartir-ui_fs_14">${block.politicaPrivacidad || 'Política de Privacidad'}</a>
         </div>
         <div class="banco-compartir-link-container">
-            <a href="${terminosCondicionesLink}" target="_blank" class="banco-compartir-ui_fs_14">${terminosCondiciones}</a>
+            <a href="${block.terminosCondicionesLink || '#'}" target="_blank" class="banco-compartir-ui_fs_14">${block.terminosCondiciones || 'Términos y Condiciones'}</a>
         </div>
         <div class="banco-compartir-link-container">
-            <a href="${facebookUrl}" target="_blank" class="banco-compartir-ui_fs_14">${facebookTexto}</a>
-            <img src="${iconoFacebook}" alt="Facebook Icon" class="banco-compartir-icon">
+            <a href="${block.facebookUrl || '#'}" target="_blank" class="banco-compartir-ui_fs_14">${block.facebookTexto || 'Síguenos en Facebook'}</a>
+            <img src="${block.iconoFacebook || '/path/to/default-facebook-icon.png'}" alt="Facebook Icon" class="banco-compartir-icon">
         </div>
         <div class="banco-compartir-link-container">
-            <a href="${telefonoLink}" class="banco-compartir-ui_fs_14">${telefonoTexto}</a>
-            <img src="${iconoTelefono}" alt="Phone Icon" class="banco-compartir-icon">
+            <a href="${block.telefonoLink || '#'}" class="banco-compartir-ui_fs_14">${block.telefonoTexto || 'Llama al 123-456-789'}</a>
+            <img src="${block.iconoTelefono || '/path/to/default-phone-icon.png'}" alt="Phone Icon" class="banco-compartir-icon">
         </div>
     `;
 
-    // Añadir el subcontenedor con los enlaces al contenedor principal
+    // Añadimos el subcontenedor con el contenido al contenedor principal
     subContainer.appendChild(container);
 
-    // Añadir el contenedor completo al bloque
+    // Añadimos el contenedor final al bloque de AEM
     block.appendChild(subContainer);
 }
