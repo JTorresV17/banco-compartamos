@@ -270,6 +270,6 @@ header nav .nav-tools {
 }
 
 img[alt='banner-icon']{
-  width: 200px;
-  height: 63px;
+  width: 200px !important;
+  height: 63px !important;
 }
