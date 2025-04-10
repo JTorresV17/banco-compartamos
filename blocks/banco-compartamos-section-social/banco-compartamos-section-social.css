@@ -7,6 +7,10 @@
 .banco-compartir-ui_section {
     display: flex;
     justify-content: space-between;
+    
+}
+
+.banco-compartir-ui_section__subcontainer{
     padding: 0 35px 0 5px;
     max-width: 1200px;
 }

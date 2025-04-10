@@ -1,9 +1,13 @@
 export default function decorate(block) {
     console.log('Decorating block categories', block);  // Ver los datos del bloque
 
-    // Creamos un contenedor para los enlaces
+    // Creamos un contenedor principal para los enlaces
     const container = document.createElement('div');
     container.className = 'banco-compartir-ui_section banco-compartir-ui_section--25 banco-compartir-rw-section-links-social';
+
+    // Creamos un sub-div que contendrá los enlaces
+    const subContainer = document.createElement('div');
+    subContainer.className = 'banco-compartir-ui_section__subcontainer'; // Clase para el sub div
 
     // Buscar todos los elementos <p> que contienen los datos
     const fields = block.dataset; // Obtenemos los datos del bloque
@@ -40,7 +44,7 @@ export default function decorate(block) {
             politicaPrivacidadLink.textContent.trim(),
             '' // No hay icono para Política de Privacidad
         );
-        container.appendChild(policyLinkContainer);
+        subContainer.appendChild(policyLinkContainer);
     }
 
     // Verificar si el campo de términos y condiciones tiene datos
@@ -52,7 +56,7 @@ export default function decorate(block) {
             terminosCondicionesLink.textContent.trim(),
             '' // No hay icono para Términos y Condiciones
         );
-        container.appendChild(termsLinkContainer);
+        subContainer.appendChild(termsLinkContainer);
     }
 
     // Verificar si el campo de Facebook tiene datos
@@ -65,7 +69,7 @@ export default function decorate(block) {
             facebookUrl.textContent.trim(),
             iconoFacebook.src // Icono de Facebook
         );
-        container.appendChild(facebookLinkContainer);
+        subContainer.appendChild(facebookLinkContainer);
     }
 
     // Verificar si el campo de Teléfono tiene datos
@@ -78,8 +82,11 @@ export default function decorate(block) {
             telefonoLink.textContent.trim(),
             iconoTelefono.src // Icono de Teléfono
         );
-        container.appendChild(phoneLinkContainer);
+        subContainer.appendChild(phoneLinkContainer);
     }
+
+    // Añadimos el sub-container con los enlaces dentro del contenedor principal
+    container.appendChild(subContainer);
 
     // Añadimos todo al bloque
     block.textContent = '';  // Limpiar el contenido original del bloque
