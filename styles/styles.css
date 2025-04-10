@@ -13,6 +13,7 @@
 :root {
   /* colors */
   --color-primary-principal: #CE005D;
+  --color-primary-principal-hover: #910048;
   --color-primary-items: #ffa300;
   --color-secondary-principal: #a5978d;
 

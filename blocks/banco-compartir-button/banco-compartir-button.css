@@ -8,3 +8,11 @@
   border-radius: var(--al-font-size-xs);
   margin: 0 auto;
 }
+.banco-compartir-button-cta:hover,
+.banco-compartir-button-cta:focus{
+  background-color: var(--color-primary-principal-hover);
+}
+.banco-compartir-button-block{
+  display: flex;
+  justify-content: center;
+}
