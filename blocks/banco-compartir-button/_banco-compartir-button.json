@@ -28,11 +28,6 @@
         },
         {
           "component": "text",
-          "name": "linkBackgroundColor",
-          "label": "Color de fondo del enlace"
-        },
-        {
-          "component": "text",
           "name": "linkText",
           "label": "Contenido"
         },
