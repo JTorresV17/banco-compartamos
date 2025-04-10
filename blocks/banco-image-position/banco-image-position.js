@@ -2,67 +2,85 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const items = Array.from(block.children);
-
-  const imageElement = items.shift(); // Primera parte: imagen
-  const titleElement = items.shift(); // Segunda parte: título
-  const descriptionElement = items.shift(); // Tercera parte: descripción
+  const imageElement = items[0];
+  const titleElement = items[1];
+  const descriptionElement = items[2];
 
   const imgElement = imageElement?.querySelector('img');
   const imgSrc = imgElement?.src || '';
-  const imgAlt = imgElement?.alt || 'Image';
-  const titleContent = titleElement?.textContent.trim() || '';
-  const descriptionContent = descriptionElement?.textContent.trim() || '';
 
   const container = document.createElement('div');
   container.classList.add('image-text-container');
 
-  // Crear el contenedor de la imagen
+  const isEditMode = document.body.classList.contains('aem-Authoring');
+
+  // Crear wrapper de imagen
   const imageWrapper = document.createElement('div');
   imageWrapper.classList.add('image-wrapper');
   const image = document.createElement('img');
   image.src = imgSrc;
-  image.alt = imgAlt;
   imageWrapper.appendChild(image);
 
-  // Crear el contenedor de texto
+  // Permitir que sea "draggable" en modo edición
+  if (isEditMode) {
+    imageWrapper.setAttribute('draggable', 'true');
+
+    imageWrapper.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', 'image');
+    });
+  }
+
+  // Crear contenedor de texto
   const textContainer = document.createElement('div');
   textContainer.classList.add('text-container');
 
-  const titleWrapper = document.createElement('div');
-  titleWrapper.classList.add('title-wrapper');
-  titleWrapper.textContent = titleContent;
+  titleElement.classList.add('title-wrapper');
+  descriptionElement.classList.add('description-wrapper');
 
-  const descriptionWrapper = document.createElement('div');
-  descriptionWrapper.classList.add('description-wrapper');
-  descriptionWrapper.textContent = descriptionContent;
+  textContainer.appendChild(titleElement);
+  textContainer.appendChild(descriptionElement);
 
-  textContainer.appendChild(titleWrapper);
-  textContainer.appendChild(descriptionWrapper);
+  // Hacer el textContainer zona de drop
+  if (isEditMode) {
+    textContainer.addEventListener('dragover', (e) => {
+      e.preventDefault(); // Necesario para permitir drop
+    });
 
-  // Mover los elementos con moveInstrumentation
+    textContainer.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const draggedData = e.dataTransfer.getData('text/plain');
+      if (draggedData === 'image') {
+        // Invertir el orden
+        container.innerHTML = '';
+        container.appendChild(textContainer);
+        container.appendChild(imageWrapper);
+      }
+    });
+
+    imageWrapper.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+
+    imageWrapper.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const draggedData = e.dataTransfer.getData('text/plain');
+      if (draggedData === 'image') {
+        // Volver a imagen izquierda
+        container.innerHTML = '';
+        container.appendChild(imageWrapper);
+        container.appendChild(textContainer);
+      }
+    });
+  }
+
+  // Instrumentación
   moveInstrumentation(imageElement, imageWrapper);
-  moveInstrumentation(titleElement, titleWrapper);
-  moveInstrumentation(descriptionElement, descriptionWrapper);
+  moveInstrumentation(titleElement, titleElement);
+  moveInstrumentation(descriptionElement, descriptionElement);
 
+  // Agregar al bloque
   container.appendChild(imageWrapper);
   container.appendChild(textContainer);
-
-  // Verificar si estamos en AEM Author (CQ)
-  if (block.getAttribute('data-aue-type') === 'component') {
-    container.addEventListener('click', () => {
-      // Mover la imagen y el texto dentro del contenedor (intercambiar su orden)
-      const clonedImageWrapper = imageWrapper.cloneNode(true);
-      const clonedTextContainer = textContainer.cloneNode(true);
-
-      container.innerHTML = '';
-      container.appendChild(clonedTextContainer);
-      container.appendChild(clonedImageWrapper);
-    });
-  } else {
-    // Si no estamos en Author, simplemente agregamos los elementos tal como están
-    container.appendChild(imageWrapper);
-    container.appendChild(textContainer);
-  }
 
   block.innerHTML = '';
   block.appendChild(container);
