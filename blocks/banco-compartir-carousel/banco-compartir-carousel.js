@@ -38,6 +38,8 @@ export default function decorate(block) {
   block.appendChild(nextButton);
   block.prepend(prevButton);
 
+  document.body.insertBefore(firstChild, block);
+
   const itemWidth = 357; 
 
   console.log('Item width:', itemWidth);
