@@ -1,9 +1,8 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  console.log('Decorating banco-image-position block', block);
-
   const items = Array.from(block.children);
+
   const imageElement = items.shift();
   const titleElement = items.shift();
   const descriptionElement = items.shift();
@@ -11,9 +10,8 @@ export default function decorate(block) {
   const imgElement = imageElement?.querySelector('img');
   const imgSrc = imgElement?.src || '';
   const imgAlt = imgElement?.alt || 'Image';
-
-  const titleContent = titleElement?.querySelector('p')?.textContent.trim() || '';
-  const descriptionContent = descriptionElement?.querySelector('p')?.textContent.trim() || '';
+  const titleContent = titleElement?.textContent.trim() || '';
+  const descriptionContent = descriptionElement?.textContent.trim() || '';
 
   const container = document.createElement('div');
   container.classList.add('image-text-container');
@@ -45,6 +43,11 @@ export default function decorate(block) {
 
   container.appendChild(imageWrapper);
   container.appendChild(textContainer);
+
+  // Cambiar el orden (de imagen a texto) al hacer clic
+  container.addEventListener('click', () => {
+    container.classList.toggle('reversed'); // Cambiar el orden de los elementos
+  });
 
   block.innerHTML = '';
   block.appendChild(container);

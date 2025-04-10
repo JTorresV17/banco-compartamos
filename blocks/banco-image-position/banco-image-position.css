@@ -31,7 +31,11 @@
   font-size: var(--al-font-size-x5);
 }
 
-.description-wrapper{
+.description-wrapper {
   color: var(--text-light-color);
   font-size: var(--al-font-size-x5);
+}
+
+.image-text-container.reversed {
+  flex-direction: row-reverse; /* Cambia el orden de la imagen y el texto */
 }
