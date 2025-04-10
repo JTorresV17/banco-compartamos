@@ -1,12 +1,13 @@
 export default function decorate(block) {
+    // Crear el contenedor principal
     const container = document.createElement('div');
-    container.className = 'banco-compartir-ui_section banco-compartir-ui_section--25 banco-compartir-rw-section-links-social';
+    container.className = 'banco-compartir-ui_section';
 
+    // Crear el subcontenedor donde se colocarán los enlaces
     const subContainer = document.createElement('div');
     subContainer.className = 'banco-compartir-ui_section__subcontainer';
 
-    // El bloque debe ya contener los datos desde el modelo, así que se renderiza el contenido
-    // Solo renderiza la estructura básica usando esos datos
+    // Añadir el contenido en el contenedor utilizando los datos del bloque
     container.innerHTML = `
         <div class="banco-compartir-link-container">
             <a href="${block.politicaPrivacidadLink}" target="_blank" class="banco-compartir-ui_fs_14">${block.politicaPrivacidad}</a>
@@ -24,5 +25,9 @@ export default function decorate(block) {
         </div>
     `;
 
-    block.appendChild(container);
+    // Añadir el subcontenedor con los enlaces al contenedor principal
+    subContainer.appendChild(container);
+
+    // Añadir el contenedor completo al bloque
+    block.appendChild(subContainer);
 }
