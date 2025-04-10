@@ -27,7 +27,6 @@ export default function decorate(block) {
   
     const discountContent = document.createElement('div');
     discountContent.classList.add('banco-compartir-ui_section__subcontainer'); // Subcontainer
-    discountContent.style.backgroundColor = '#f0f0f0'; // Color de fondo
   
     // Manejo del texto y enlace de Política de Privacidad
     const politicaPrivacidadDiv = document.createElement('div');
