@@ -1,6 +1,8 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
+  console.log('Decorating banco-image-position block', block);
+
   const items = Array.from(block.children);
   const imageElement = items.shift();
   const titleElement = items.shift();
@@ -8,12 +10,10 @@ export default function decorate(block) {
 
   const imgElement = imageElement?.querySelector('img');
   const imgSrc = imgElement?.src || '';
-  const titleContent = titleElement?.textContent.trim() || '';
-  const descriptionContent = descriptionElement?.textContent.trim() || '';
+  const imgAlt = imgElement?.alt || 'Image';
 
-  console.log('Image Element:', imageElement);
-  console.log('Title Element:', titleElement);
-  console.log('Description Element:', descriptionElement);
+  const titleContent = titleElement?.querySelector('p')?.textContent.trim() || '';
+  const descriptionContent = descriptionElement?.querySelector('p')?.textContent.trim() || '';
 
   const container = document.createElement('div');
   container.classList.add('image-text-container');
@@ -22,6 +22,7 @@ export default function decorate(block) {
   imageWrapper.classList.add('image-wrapper');
   const image = document.createElement('img');
   image.src = imgSrc;
+  image.alt = imgAlt;
   imageWrapper.appendChild(image);
 
   const textContainer = document.createElement('div');
@@ -38,7 +39,6 @@ export default function decorate(block) {
   textContainer.appendChild(titleWrapper);
   textContainer.appendChild(descriptionWrapper);
 
-  console.log('Moving elements with moveInstrumentation...');
   moveInstrumentation(imageElement, imageWrapper);
   moveInstrumentation(titleElement, titleWrapper);
   moveInstrumentation(descriptionElement, descriptionWrapper);
