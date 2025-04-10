@@ -21,15 +21,6 @@ export default function decorate(block) {
   image.src = imgSrc;
   imageWrapper.appendChild(image);
 
-  // Permitir que sea "draggable" en modo edición
-  if (isEditMode) {
-    imageWrapper.setAttribute('draggable', 'true');
-
-    imageWrapper.addEventListener('dragstart', (e) => {
-      e.dataTransfer.setData('text/plain', 'image');
-    });
-  }
-
   // Crear contenedor de texto
   const textContainer = document.createElement('div');
   textContainer.classList.add('text-container');
@@ -40,48 +31,52 @@ export default function decorate(block) {
   textContainer.appendChild(titleElement);
   textContainer.appendChild(descriptionElement);
 
-  // Hacer el textContainer zona de drop
-  if (isEditMode) {
-    textContainer.addEventListener('dragover', (e) => {
-      e.preventDefault(); // Necesario para permitir drop
-    });
-
-    textContainer.addEventListener('drop', (e) => {
-      e.preventDefault();
-      const draggedData = e.dataTransfer.getData('text/plain');
-      if (draggedData === 'image') {
-        // Invertir el orden
-        container.innerHTML = '';
-        container.appendChild(textContainer);
-        container.appendChild(imageWrapper);
-      }
-    });
-
-    imageWrapper.addEventListener('dragover', (e) => {
-      e.preventDefault();
-    });
-
-    imageWrapper.addEventListener('drop', (e) => {
-      e.preventDefault();
-      const draggedData = e.dataTransfer.getData('text/plain');
-      if (draggedData === 'image') {
-        // Volver a imagen izquierda
-        container.innerHTML = '';
-        container.appendChild(imageWrapper);
-        container.appendChild(textContainer);
-      }
-    });
-  }
-
   // Instrumentación
   moveInstrumentation(imageElement, imageWrapper);
   moveInstrumentation(titleElement, titleElement);
   moveInstrumentation(descriptionElement, descriptionElement);
 
-  // Agregar al bloque
-  container.appendChild(imageWrapper);
-  container.appendChild(textContainer);
+  // Función para renderizar el orden basado en el estado del checkbox
+  const renderLayout = (isVariationChecked) => {
+    container.innerHTML = '';
+    if (isVariationChecked) {
+      container.appendChild(textContainer);
+      container.appendChild(imageWrapper);
+    } else {
+      container.appendChild(imageWrapper);
+      container.appendChild(textContainer);
+    }
 
+    if (isEditMode) {
+      container.appendChild(checkboxWrapper);
+    }
+  };
+
+  // Si estamos en modo edición, crear checkbox
+  let checkboxWrapper;
+  if (isEditMode) {
+    checkboxWrapper = document.createElement('div');
+    checkboxWrapper.style.marginTop = '1rem';
+    checkboxWrapper.style.textAlign = 'center';
+
+    const label = document.createElement('label');
+    label.textContent = 'Variación ';
+    label.style.color = '#fff';
+    label.style.fontSize = '14px';
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+
+    checkbox.addEventListener('change', () => {
+      renderLayout(checkbox.checked);
+    });
+
+    label.appendChild(checkbox);
+    checkboxWrapper.appendChild(label);
+  }
+
+  // Render inicial
+  renderLayout(false);
   block.innerHTML = '';
   block.appendChild(container);
 }
