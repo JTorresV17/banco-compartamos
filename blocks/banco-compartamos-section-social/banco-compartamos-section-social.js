@@ -9,11 +9,9 @@ export default function decorate(block) {
     const subContainer = document.createElement('div');
     subContainer.className = 'banco-compartir-ui_section__subcontainer'; // Clase para el sub div
 
-    // Buscar todos los elementos <p> que contienen los datos
+    // Leer los datos directamente desde los campos editados en AEM
     const politicaPrivacidadText = block.querySelector('[data-aue-prop="politicaPrivacidad"]');
     const politicaPrivacidadLink = block.querySelector('[data-aue-prop="politicaPrivacidadLink"]');
-    
-    // Verificar si los datos existen y agregar el enlace correspondiente
     if (politicaPrivacidadText && politicaPrivacidadLink) {
         const policyLinkContainer = document.createElement('div');
         policyLinkContainer.className = 'banco-compartir-link-container';
