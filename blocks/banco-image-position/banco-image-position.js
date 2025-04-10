@@ -2,7 +2,7 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const items = Array.from(block.children);
-  const imageElement = items[0]; // No lo vamos a modificar por ahora
+  const imageElement = items[0];
   const titleElement = items[1];
   const descriptionElement = items[2];
 
@@ -12,6 +12,8 @@ export default function decorate(block) {
   const container = document.createElement('div');
   container.classList.add('image-text-container');
 
+  const isEditMode = document.body.classList.contains('aem-Authoring');
+
   // Crear wrapper de imagen
   const imageWrapper = document.createElement('div');
   imageWrapper.classList.add('image-wrapper');
@@ -19,49 +21,62 @@ export default function decorate(block) {
   image.src = imgSrc;
   imageWrapper.appendChild(image);
 
+  // Permitir que sea "draggable" en modo edición
+  if (isEditMode) {
+    imageWrapper.setAttribute('draggable', 'true');
+
+    imageWrapper.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', 'image');
+    });
+  }
+
   // Crear contenedor de texto
   const textContainer = document.createElement('div');
   textContainer.classList.add('text-container');
 
-  // Crear el título editable
-  const titleWrapper = document.createElement('div');
-  titleWrapper.classList.add('title-wrapper');
-  titleWrapper.textContent = titleElement?.textContent.trim() || '';
-  titleWrapper.addEventListener('click', () => {
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.value = titleWrapper.textContent;
-    input.addEventListener('blur', () => {
-      titleWrapper.textContent = input.value;
-    });
-    titleWrapper.innerHTML = '';
-    titleWrapper.appendChild(input);
-    input.focus();
-  });
+  titleElement.classList.add('title-wrapper');
+  descriptionElement.classList.add('description-wrapper');
 
-  // Crear la descripción editable
-  const descriptionWrapper = document.createElement('div');
-  descriptionWrapper.classList.add('description-wrapper');
-  descriptionWrapper.textContent = descriptionElement?.textContent.trim() || '';
-  descriptionWrapper.addEventListener('click', () => {
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.value = descriptionWrapper.textContent;
-    input.addEventListener('blur', () => {
-      descriptionWrapper.textContent = input.value;
-    });
-    descriptionWrapper.innerHTML = '';
-    descriptionWrapper.appendChild(input);
-    input.focus();
-  });
+  textContainer.appendChild(titleElement);
+  textContainer.appendChild(descriptionElement);
 
-  textContainer.appendChild(titleWrapper);
-  textContainer.appendChild(descriptionWrapper);
+  // Hacer el textContainer zona de drop
+  if (isEditMode) {
+    textContainer.addEventListener('dragover', (e) => {
+      e.preventDefault(); // Necesario para permitir drop
+    });
+
+    textContainer.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const draggedData = e.dataTransfer.getData('text/plain');
+      if (draggedData === 'image') {
+        // Invertir el orden
+        container.innerHTML = '';
+        container.appendChild(textContainer);
+        container.appendChild(imageWrapper);
+      }
+    });
+
+    imageWrapper.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+
+    imageWrapper.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const draggedData = e.dataTransfer.getData('text/plain');
+      if (draggedData === 'image') {
+        // Volver a imagen izquierda
+        container.innerHTML = '';
+        container.appendChild(imageWrapper);
+        container.appendChild(textContainer);
+      }
+    });
+  }
 
   // Instrumentación
   moveInstrumentation(imageElement, imageWrapper);
-  moveInstrumentation(titleElement, titleWrapper);
-  moveInstrumentation(descriptionElement, descriptionWrapper);
+  moveInstrumentation(titleElement, titleElement);
+  moveInstrumentation(descriptionElement, descriptionElement);
 
   // Agregar al bloque
   container.appendChild(imageWrapper);
