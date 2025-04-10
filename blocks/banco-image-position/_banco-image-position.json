@@ -44,8 +44,8 @@
                 {
                     "component": "text",
                     "valueType": "string",
-                    "name": "textColor",
-                    "label": "Texto del Color de fondo",
+                    "name": "variacion",
+                    "label": "Variación escribir (cambiar) en el campo)",
                     "value": ""
                 }
             ]
