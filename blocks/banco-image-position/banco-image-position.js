@@ -13,12 +13,11 @@ export default function decorate(block) {
     if (children[0]) {
         const image = children[0].querySelector('img');
         if (image) {
-            image.setAttribute('data-move-instrumentation', 'true'); // ← importante
+            image.setAttribute('data-move-instrumentation', 'true');
             imageWrapper.appendChild(image);
         }
     }
 
-    // Dejar los campos como contenteditable para que funcionen con el editor
     if (children[1]) {
         titleWrapper.innerHTML = children[1].innerHTML;
         titleWrapper.setAttribute('contenteditable', 'true');
@@ -29,7 +28,6 @@ export default function decorate(block) {
         descriptionWrapper.setAttribute('contenteditable', 'true');
     }
 
-    // Campo 3: texto de control para cambiar orden
     let cambiarOrden = false;
     if (children[3]) {
         const triggerText = children[3].textContent.trim().toLowerCase();
