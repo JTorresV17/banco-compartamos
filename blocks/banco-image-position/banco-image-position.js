@@ -16,37 +16,6 @@ export default function decorate(block) {
 
     const children = [...block.children];
 
-    // Verifica si estamos en modo autor (AEM)
-    const isAuthorMode = window?.location?.hostname.includes('author');
-
-    if (children[0]) {
-        const image = children[0].querySelector('img');
-        if (image) {
-            image.setAttribute('data-move-instrumentation', 'true');
-            imageWrapper.appendChild(image);
-        }
-    }
-
-    if (children[1]) {
-        titleWrapper.innerHTML = children[1].innerHTML;
-        // Solo hacer editable en el modo autor
-        if (isAuthorMode) {
-            titleWrapper.setAttribute('contenteditable', 'true');
-        } else {
-            titleWrapper.setAttribute('contenteditable', 'false');
-        }
-    }
-
-    if (children[2]) {
-        descriptionWrapper.innerHTML = children[2].innerHTML;
-        // Solo hacer editable en el modo autor
-        if (isAuthorMode) {
-            descriptionWrapper.setAttribute('contenteditable', 'true');
-        } else {
-            descriptionWrapper.setAttribute('contenteditable', 'false');
-        }
-    }
-
     let cambiarOrden = false;
     if (children[3]) {
         const triggerText = children[3].textContent.trim().toLowerCase();
@@ -55,9 +24,31 @@ export default function decorate(block) {
         }
     }
 
+    // Asignar imagen
+    if (children[0]) {
+        const image = children[0].querySelector('img');
+        if (image) {
+            image.setAttribute('data-move-instrumentation', 'true');
+            imageWrapper.appendChild(image);
+        }
+    }
+
+    // Asignar título
+    if (children[1]) {
+        titleWrapper.innerHTML = children[1].innerHTML;
+        // No es necesario marcarlo editable aquí, Franklin lo gestionará automáticamente
+    }
+
+    // Asignar descripción
+    if (children[2]) {
+        descriptionWrapper.innerHTML = children[2].innerHTML;
+        // Lo mismo para la descripción, Franklin manejará la edición automáticamente
+    }
+
     textContainer.appendChild(titleWrapper);
     textContainer.appendChild(descriptionWrapper);
 
+    // Cambiar orden si es necesario
     if (cambiarOrden) {
         container.appendChild(textContainer);
         container.appendChild(imageWrapper);
@@ -66,6 +57,7 @@ export default function decorate(block) {
         container.appendChild(textContainer);
     }
 
+    // Limpiar el contenido del bloque y agregar el nuevo contenedor
     block.textContent = '';
     block.appendChild(container);
 }
