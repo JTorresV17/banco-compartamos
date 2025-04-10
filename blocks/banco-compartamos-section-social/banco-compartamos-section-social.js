@@ -25,10 +25,6 @@ export default function decorate(block) {
     const telefonoLink = telefonoLinkElement?.querySelector('a')?.href || '';
     const telefonoIcon = telefonoIconElement?.querySelector('img')?.src || '';
   
-    // Asignar el background color a la clase existente
-    block.closest('.banco-compartir-ui_section__subcontainer')?.style.setProperty('background-color', '#f0f0f0'); // Suponiendo un color de fondo predeterminado
-  
-    // Crear el contenedor principal del cintillo de descuento
     const discountContent = document.createElement('div');
     discountContent.classList.add('banco-compartir-ui_section__subcontainer'); // Subcontainer
     discountContent.style.backgroundColor = '#f0f0f0'; // Color de fondo
