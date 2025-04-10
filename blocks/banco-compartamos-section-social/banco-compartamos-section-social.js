@@ -1,5 +1,5 @@
 export default function decorate(block) {
-    // Encontramos el contenedor principal y el subcontenedor
+    console.log('Decorating block social:', block);
     const container = block.querySelector('.banco-compartamos-section-social');
     const sectionContainer = container.querySelector('.banco-compartir-ui_section');
     const subContainer = sectionContainer.querySelector('.banco-compartir-ui_section__subcontainer');
