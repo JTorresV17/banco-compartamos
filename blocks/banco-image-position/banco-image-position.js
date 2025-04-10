@@ -29,15 +29,21 @@ export default function decorate(block) {
 
     if (children[1]) {
         titleWrapper.innerHTML = children[1].innerHTML;
+        // Solo hacer editable en el modo autor
         if (isAuthorMode) {
             titleWrapper.setAttribute('contenteditable', 'true');
+        } else {
+            titleWrapper.setAttribute('contenteditable', 'false');
         }
     }
 
     if (children[2]) {
         descriptionWrapper.innerHTML = children[2].innerHTML;
+        // Solo hacer editable en el modo autor
         if (isAuthorMode) {
             descriptionWrapper.setAttribute('contenteditable', 'true');
+        } else {
+            descriptionWrapper.setAttribute('contenteditable', 'false');
         }
     }
 
