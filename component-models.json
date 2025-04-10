@@ -303,5 +303,44 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "banco-compartir-button",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Contenido"
+      },
+      {
+        "component": "text",
+        "name": "linkTitle",
+        "label": "Titulo"
+      },
+      {
+        "component": "select",
+        "name": "linkType",
+        "label": "Type",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "secondary",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
   }
 ]

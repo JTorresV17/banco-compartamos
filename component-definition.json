@@ -217,6 +217,20 @@
               }
             }
           }
+        },
+        {
+          "title": "Boton Banco Compartir",
+          "id": "banco-compartir-button",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/button/v1/button",
+                "template": {
+                  "model": "banco-compartir-button"
+                }
+              }
+            }
+          }
         }
       ]
     }
