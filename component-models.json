@@ -224,7 +224,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "textColor",
+        "name": "variacion",
         "label": "Variación imagen lado derecho(Escribir |cambiar|))",
         "value": ""
       }
