@@ -11,31 +11,31 @@ export default function decorate(block) {
     descriptionWrapper.className = 'description-wrapper';
     const children = [...block.children];
     if (children[0]) {
-      const image = children[0].querySelector('img');
-      if (image) {
-        image.setAttribute('data-move-instrumentation', 'true'); // ← importante
-        imageWrapper.appendChild(image);
-      }
+        const image = children[0].querySelector('img');
+        if (image) {
+            image.setAttribute('data-move-instrumentation', 'true'); // ← importante
+            imageWrapper.appendChild(image);
+        }
     }
 
     // Dejar los campos como contenteditable para que funcionen con el editor
     if (children[1]) {
-      titleWrapper.innerHTML = children[1].innerHTML;
-      titleWrapper.setAttribute('contenteditable', 'true');
+        titleWrapper.innerHTML = children[1].innerHTML;
+        titleWrapper.setAttribute('contenteditable', 'true');
     }
 
     if (children[2]) {
-      descriptionWrapper.innerHTML = children[2].innerHTML;
-      descriptionWrapper.setAttribute('contenteditable', 'true');
+        descriptionWrapper.innerHTML = children[2].innerHTML;
+        descriptionWrapper.setAttribute('contenteditable', 'true');
     }
 
     // Campo 3: texto de control para cambiar orden
     let cambiarOrden = false;
     if (children[3]) {
-      const triggerText = children[3].textContent.trim().toLowerCase();
-      if (triggerText === 'cambiar') {
-        cambiarOrden = true;
-      }
+        const triggerText = children[3].textContent.trim().toLowerCase();
+        if (triggerText === 'cambiar') {
+            cambiarOrden = true;
+        }
     }
 
     textContainer.appendChild(titleWrapper);
@@ -43,13 +43,13 @@ export default function decorate(block) {
 
     // Orden condicional
     if (cambiarOrden) {
-      container.appendChild(textContainer);
-      container.appendChild(imageWrapper);
+        container.appendChild(textContainer);
+        container.appendChild(imageWrapper);
     } else {
-      container.appendChild(imageWrapper);
-      container.appendChild(textContainer);
+        container.appendChild(imageWrapper);
+        container.appendChild(textContainer);
     }
 
     block.textContent = '';
     block.appendChild(container);
-  }
+}
