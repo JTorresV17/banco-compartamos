@@ -2,7 +2,6 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const items = Array.from(block.children);
-  
   // Extraemos los elementos de imagen, título y descripción
   const imageElement = items.shift();
   const titleElement = items.shift();
