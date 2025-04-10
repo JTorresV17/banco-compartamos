@@ -1,4 +1,5 @@
 export default function decorate(block) {
+    console.log('Decorating block section social', block);
     const container = document.createElement('div');
     container.className = 'banco-compartir-ui_section banco-compartir-ui_section--25 banco-compartir-rw-section-links-social';
 
