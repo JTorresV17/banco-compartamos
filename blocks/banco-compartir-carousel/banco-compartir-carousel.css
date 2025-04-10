@@ -48,6 +48,9 @@
 .banco-compartir-carousel-button-next{
   background-image: url(https://www.pidetucreditoencompartamos.com/assets/images/iconss/arrw-right_mag.png);
 }
+button[disabled]{
+  opacity: 0.5;
+}
 .banco-compartir-carousel-button-next:hover,
 .banco-compartir-carousel-button-next:focus,
 .banco-compartir-carousel-button-prev:hover,
