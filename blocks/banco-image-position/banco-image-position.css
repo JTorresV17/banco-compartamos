@@ -38,3 +38,7 @@
   font-size: var(--al-font-size-x5);
   font-family: var(--body-font-family);
 }
+
+.description-wrapper p{
+  margin: 0;
+}
