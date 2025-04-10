@@ -4,6 +4,11 @@
     margin: 0;
 }
 
+.banco-compartir-ui_section {
+    padding: 15px 0;
+    background-color: var(--color-secondary-principal);
+}
+
 .banco-compartir-ui_section__subcontainer{
     display: flex;
     justify-content: space-between;
@@ -11,13 +16,10 @@
     max-width: 1200px;
 }
 
-.banco-compartir-ui_section__box {
-    padding: 20px;
-}
-
 .banco-compartir-link-container{
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .banco-compartir-link-container img{
@@ -26,38 +28,9 @@
     border-radius: 50%;
 }
 
-.banco-compartir-ul_list_social {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    padding: 0;
+.banco-compartir-ui_fs_14{
+    color: var(--text-light-color);
+    text-decoration: underline;
+    font-size: var(--al-font-size-lg);
 }
 
-.banco-compartir-ul_list_social__li {
-    display: flex;
-    align-items: center;
-}
-
-.banco-compartir-ul_list_social__a {
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.banco-compartir-ul_list_social__image {
-    width: 20px;
-    height: 20px;
-    background-size: cover;
-    background-position: center;
-}
-
-.banco-compartir-ul_list_social__text {
-    font-size: 14px;
-}
-
-.banco-compartir-ui_fs_14 {
-    font-size: 14px;
-}
