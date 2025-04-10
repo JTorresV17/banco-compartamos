@@ -29,9 +29,16 @@
   text-align: center;
   color: var(--text-light-color);
   font-size: var(--al-font-size-x5);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-bold);
 }
 
 .description-wrapper{
   color: var(--text-light-color);
   font-size: var(--al-font-size-x5);
+  font-family: var(--body-font-family);
+}
+
+.description-wrapper p{
+  margin: 0;
 }

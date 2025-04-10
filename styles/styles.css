@@ -29,9 +29,12 @@
   --body-font-family: roboto, roboto-fallback, sans-serif;
   --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
 
-  --font-Bree-Bold: "Bree-Bold";
-  --font-Bree-Light: "Bree-Light";
-  
+  /* font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: bold;
+
+
 
   /* font sizes */
   --al-font-size-xs: 8px;
