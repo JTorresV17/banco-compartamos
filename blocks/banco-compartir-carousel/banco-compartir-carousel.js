@@ -16,7 +16,7 @@ export default function decorate(block) {
   nextButton.className = 'banco-compartir-carousel-button-next';
   prevButton.disabled = true;
 
-  const items = [...block.children];
+  const items = [...block.children].slice(1); 
   let currentIndex = 0; // Mantener el índice de la imagen actual
   
 
