@@ -6,9 +6,18 @@ export default function decorate(block) {
   const url = block.firstElementChild;
   const content = block.lastElementChild;
 
-  console.log({
-    url: url,
-    content: content,
-  })
+  const urlText = url.textContent.trim();
+  const contentText = content.textContent.trim();
+
+  block.removeChild(url);
+  block.removeChild(content);
+
+  const button = document.createElement('button');
+  button.className = 'banco-compartir-button-cta';
+  button.textContent = contentText;
+
+  block.appendChild(button);
+
+
 
 }
