@@ -27,8 +27,8 @@
 }
 .banco-compartir-carousel-item-title{
     text-align: center;
-    font-size: 16px;
-    color: #83786f;
+    font-size: var(--al-font-size-xl);
+    color: var(--al-color-brown-x500);
     line-height: 1.2;
 }
 
