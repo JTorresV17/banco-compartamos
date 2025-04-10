@@ -11,6 +11,10 @@ export default function decorate(block) {
   const titleContent = titleElement?.textContent.trim() || '';
   const descriptionContent = descriptionElement?.textContent.trim() || '';
 
+  console.log('Image Element:', imageElement);
+  console.log('Title Element:', titleElement);
+  console.log('Description Element:', descriptionElement);
+
   const container = document.createElement('div');
   container.classList.add('image-text-container');
 
@@ -34,6 +38,7 @@ export default function decorate(block) {
   textContainer.appendChild(titleWrapper);
   textContainer.appendChild(descriptionWrapper);
 
+  console.log('Moving elements with moveInstrumentation...');
   moveInstrumentation(imageElement, imageWrapper);
   moveInstrumentation(titleElement, titleWrapper);
   moveInstrumentation(descriptionElement, descriptionWrapper);
