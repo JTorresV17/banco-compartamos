@@ -1,9 +1,10 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: #CE005D;
   width: 100%;
   z-index: 2;
   position: fixed;
+  height: 75px;
 }
 
 header nav {
@@ -28,6 +29,7 @@ header nav[aria-expanded='true'] {
     'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
   min-height: 100dvh;
+  height: 100%;
 }
 
 @media (width >= 900px) {
@@ -265,4 +267,9 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+img[alt='banner-icon']{
+  width: 200px;
+  height: 63px;
 }
