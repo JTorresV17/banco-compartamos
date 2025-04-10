@@ -175,7 +175,7 @@
         "valueType": "string",
         "name": "politicaPrivacidad",
         "label": "Texto de Política de Privacidad",
-        "value": "Política de privacidad"
+        "value": ""
       },
       {
         "component": "text",
@@ -189,7 +189,7 @@
         "valueType": "string",
         "name": "terminosCondiciones",
         "label": "Texto de Términos y Condiciones",
-        "value": "Términos y condiciones"
+        "value": ""
       },
       {
         "component": "text",
@@ -201,16 +201,16 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "facebookUrl",
-        "label": "Enlace de Facebook",
+        "name": "facebookTexto",
+        "label": "Texto de Facebook",
         "value": ""
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "facebookTexto",
-        "label": "Texto de Facebook",
-        "value": "compartamosfinancierasa"
+        "name": "facebookUrl",
+        "label": "Enlace de Facebook",
+        "value": ""
       },
       {
         "component": "reference",
@@ -222,15 +222,15 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "telefono",
-        "label": "Número de Teléfono",
+        "name": "telefonoTexto",
+        "label": "Texto de Teléfono",
         "value": ""
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "telefonoTexto",
-        "label": "Texto de Teléfono",
+        "name": "telefonoLink",
+        "label": "Enlace de Teléfono",
         "value": ""
       },
       {
