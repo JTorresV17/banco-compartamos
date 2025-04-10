@@ -6,66 +6,79 @@ export default function decorate(block) {
     container.className = 'banco-compartir-ui_section banco-compartir-ui_section--25 banco-compartir-rw-section-links-social';
 
     // Buscar todos los elementos <p> que contienen los datos
+    const fields = block.dataset; // Obtenemos los datos del bloque
+
+    // Crear el contenedor para los enlaces
+    const createLinkWithIcon = (text, link, iconSrc) => {
+        const linkContainer = document.createElement('div');
+        linkContainer.className = 'banco-compartir-link-container';
+
+        if (iconSrc) {
+            const icon = document.createElement('img');
+            icon.src = iconSrc;
+            icon.alt = 'Icon';
+            icon.className = 'banco-compartir-icon'; // Agregar clase para alinear los iconos
+            linkContainer.appendChild(icon);
+        }
+
+        const a = document.createElement('a');
+        a.href = link;
+        a.target = '_blank';
+        a.className = 'banco-compartir-ui_fs_14';
+        a.innerHTML = text;  // Añadir el texto
+        linkContainer.appendChild(a);
+
+        return linkContainer;
+    }
+
+    // Verificar si el campo de política de privacidad tiene datos
     const politicaPrivacidadText = block.querySelector('[data-aue-prop="politicaPrivacidad"]');
     const politicaPrivacidadLink = block.querySelector('[data-aue-prop="politicaPrivacidadLink"]');
+    if (politicaPrivacidadText && politicaPrivacidadLink) {
+        const policyLinkContainer = createLinkWithIcon(
+            politicaPrivacidadText.textContent.trim(),
+            politicaPrivacidadLink.textContent.trim(),
+            '' // No hay icono para Política de Privacidad
+        );
+        container.appendChild(policyLinkContainer);
+    }
+
+    // Verificar si el campo de términos y condiciones tiene datos
     const terminosCondicionesText = block.querySelector('[data-aue-prop="terminosCondiciones"]');
     const terminosCondicionesLink = block.querySelector('[data-aue-prop="terminosCondicionesLink"]');
+    if (terminosCondicionesText && terminosCondicionesLink) {
+        const termsLinkContainer = createLinkWithIcon(
+            terminosCondicionesText.textContent.trim(),
+            terminosCondicionesLink.textContent.trim(),
+            '' // No hay icono para Términos y Condiciones
+        );
+        container.appendChild(termsLinkContainer);
+    }
+
+    // Verificar si el campo de Facebook tiene datos
     const facebookTexto = block.querySelector('[data-aue-prop="facebookTexto"]');
     const facebookUrl = block.querySelector('[data-aue-prop="facebookUrl"]');
+    const iconoFacebook = block.querySelector('[data-aue-prop="iconoFacebook"]');
+    if (facebookTexto && facebookUrl && iconoFacebook) {
+        const facebookLinkContainer = createLinkWithIcon(
+            facebookTexto.textContent.trim(),
+            facebookUrl.textContent.trim(),
+            iconoFacebook.src // Icono de Facebook
+        );
+        container.appendChild(facebookLinkContainer);
+    }
+
+    // Verificar si el campo de Teléfono tiene datos
     const telefonoTexto = block.querySelector('[data-aue-prop="telefonoTexto"]');
     const telefonoLink = block.querySelector('[data-aue-prop="telefonoLink"]');
-
-    // Agregar texto y enlaces si existen
-    if (politicaPrivacidadText && politicaPrivacidadLink) {
-        const policyLink = document.createElement('a');
-        policyLink.href = politicaPrivacidadLink.textContent.trim();
-        policyLink.target = '_blank';
-        policyLink.className = 'banco-compartir-ui_fs_14';
-        policyLink.innerHTML = politicaPrivacidadText.textContent.trim();  // Mostrar el texto de la política de privacidad
-        container.appendChild(policyLink);
-    }
-
-    if (terminosCondicionesText && terminosCondicionesLink) {
-        const termsLink = document.createElement('a');
-        termsLink.href = terminosCondicionesLink.textContent.trim();
-        termsLink.target = '_blank';
-        termsLink.className = 'banco-compartir-ui_fs_14';
-        termsLink.innerHTML = terminosCondicionesText.textContent.trim();  // Mostrar el texto de los términos y condiciones
-        container.appendChild(termsLink);
-    }
-
-    if (facebookTexto && facebookUrl) {
-        const facebookLink = document.createElement('a');
-        facebookLink.href = facebookUrl.textContent.trim();
-        facebookLink.target = '_blank';
-        facebookLink.className = 'banco-compartir-ui_fs_14';
-        facebookLink.innerHTML = facebookTexto.textContent.trim();  // Mostrar el texto de Facebook
-        container.appendChild(facebookLink);
-    }
-
-    if (telefonoTexto && telefonoLink) {
-        const phoneLink = document.createElement('a');
-        phoneLink.href = telefonoLink.textContent.trim();
-        phoneLink.className = 'banco-compartir-ui_fs_14';
-        phoneLink.innerHTML = telefonoTexto.textContent.trim();  // Mostrar el texto del teléfono
-        container.appendChild(phoneLink);
-    }
-
-    // Ahora añadimos los iconos si existen
-    const iconoFacebook = block.querySelector('[data-aue-prop="iconoFacebook"]');
-    if (iconoFacebook) {
-        const imgFacebook = document.createElement('img');
-        imgFacebook.src = iconoFacebook.src;
-        imgFacebook.alt = 'Facebook Icon';
-        container.appendChild(imgFacebook);
-    }
-
     const iconoTelefono = block.querySelector('[data-aue-prop="iconoTelefono"]');
-    if (iconoTelefono) {
-        const imgTelefono = document.createElement('img');
-        imgTelefono.src = iconoTelefono.src;
-        imgTelefono.alt = 'Telefono Icon';
-        container.appendChild(imgTelefono);
+    if (telefonoTexto && telefonoLink && iconoTelefono) {
+        const phoneLinkContainer = createLinkWithIcon(
+            telefonoTexto.textContent.trim(),
+            telefonoLink.textContent.trim(),
+            iconoTelefono.src // Icono de Teléfono
+        );
+        container.appendChild(phoneLinkContainer);
     }
 
     // Añadimos todo al bloque
