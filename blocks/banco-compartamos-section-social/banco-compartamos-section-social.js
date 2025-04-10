@@ -1,5 +1,5 @@
 export default function decorate(block) {
-    // Crear el contenedor principal
+    console.log('block decorated:', block);
     const container = document.createElement('div');
     container.className = 'banco-compartir-ui_section';
 
