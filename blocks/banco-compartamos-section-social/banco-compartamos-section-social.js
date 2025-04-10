@@ -1,56 +1,62 @@
 export default function decorate(block) {
     // Crear el contenedor principal
-    console.log('Decorating block social', block);
     const container = document.createElement('div');
     container.className = 'banco-compartir-ui_section';
 
-    // Crear el subcontenedor
+    // Crear el subcontenedor donde se colocarán los enlaces
     const subContainer = document.createElement('div');
     subContainer.className = 'banco-compartir-ui_section__subcontainer';
 
-    // Crear los enlaces con sus clases
-    const politicaLink = document.createElement('a');
-    politicaLink.href = block.politicaPrivacidadLink || '#';
-    politicaLink.className = 'banco-compartir-ui_fs_14';
-    politicaLink.textContent = block.politicaPrivacidad || 'Política de Privacidad';
+    // Crear los enlaces con sus clases, solo si los valores existen
+    if (block.politicaPrivacidadLink) {
+        const politicaLink = document.createElement('a');
+        politicaLink.href = block.politicaPrivacidadLink;
+        politicaLink.className = 'banco-compartir-ui_fs_14';
+        politicaLink.textContent = block.politicaPrivacidad; // Solo si existe
+        subContainer.appendChild(politicaLink);
+    }
 
-    const terminosLink = document.createElement('a');
-    terminosLink.href = block.terminosCondicionesLink || '#';
-    terminosLink.className = 'banco-compartir-ui_fs_14';
-    terminosLink.textContent = block.terminosCondiciones || 'Términos y Condiciones';
+    if (block.terminosCondicionesLink) {
+        const terminosLink = document.createElement('a');
+        terminosLink.href = block.terminosCondicionesLink;
+        terminosLink.className = 'banco-compartir-ui_fs_14';
+        terminosLink.textContent = block.terminosCondiciones; // Solo si existe
+        subContainer.appendChild(terminosLink);
+    }
 
-    const facebookLink = document.createElement('a');
-    facebookLink.href = block.facebookUrl || '#';
-    facebookLink.className = 'banco-compartir-ui_fs_14';
-    facebookLink.textContent = block.facebookTexto || 'Síguenos en Facebook';
+    if (block.facebookUrl) {
+        const facebookLink = document.createElement('a');
+        facebookLink.href = block.facebookUrl;
+        facebookLink.className = 'banco-compartir-ui_fs_14';
+        facebookLink.textContent = block.facebookTexto; // Solo si existe
+        subContainer.appendChild(facebookLink);
 
-    const telefonoLink = document.createElement('a');
-    telefonoLink.href = block.telefonoLink || '#';
-    telefonoLink.className = 'banco-compartir-ui_fs_14';
-    telefonoLink.textContent = block.telefonoTexto || 'Llama al 123-456-789';
+        if (block.iconoFacebook) {
+            const facebookIcon = document.createElement('img');
+            facebookIcon.src = block.iconoFacebook;
+            facebookIcon.className = 'banco-compartir-icon';
+            subContainer.appendChild(facebookIcon);
+        }
+    }
 
-    // Crear los iconos y asignar las clases a las imágenes
-    const facebookIcon = document.createElement('img');
-    facebookIcon.src = block.iconoFacebook || '/path/to/default-facebook-icon.png';
-    facebookIcon.alt = 'Facebook Icon';
-    facebookIcon.className = 'banco-compartir-icon';
+    if (block.telefonoLink) {
+        const telefonoLink = document.createElement('a');
+        telefonoLink.href = block.telefonoLink;
+        telefonoLink.className = 'banco-compartir-ui_fs_14';
+        telefonoLink.textContent = block.telefonoTexto; // Solo si existe
+        subContainer.appendChild(telefonoLink);
 
-    const telefonoIcon = document.createElement('img');
-    telefonoIcon.src = block.iconoTelefono || '/path/to/default-phone-icon.png';
-    telefonoIcon.alt = 'Phone Icon';
-    telefonoIcon.className = 'banco-compartir-icon';
+        if (block.iconoTelefono) {
+            const telefonoIcon = document.createElement('img');
+            telefonoIcon.src = block.iconoTelefono;
+            telefonoIcon.className = 'banco-compartir-icon';
+            subContainer.appendChild(telefonoIcon);
+        }
+    }
 
-    // Añadir los enlaces y iconos al subcontenedor
-    subContainer.appendChild(politicaLink);
-    subContainer.appendChild(terminosLink);
-    subContainer.appendChild(facebookLink);
-    subContainer.appendChild(facebookIcon);
-    subContainer.appendChild(telefonoLink);
-    subContainer.appendChild(telefonoIcon);
-
-    // Añadir el subcontenedor al contenedor principal
+    // Añadir el subcontenedor con los enlaces al contenedor principal
     container.appendChild(subContainer);
 
-    // Añadir el contenedor completo al bloque
+    // Añadir el contenedor final al bloque
     block.appendChild(container);
 }
