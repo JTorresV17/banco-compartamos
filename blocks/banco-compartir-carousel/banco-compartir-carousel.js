@@ -1,6 +1,5 @@
 // Decorate cochez-carrusel block
 export default function decorate(block) {
-  console.log('Decorating block categories', block);
 
   block.className = 'banco-compartir-carousel-block';
 
@@ -21,8 +20,7 @@ export default function decorate(block) {
   firstChild.className = 'banco-compartir-carousel-title';
   block.removeChild(firstChild); 
   block.parentNode.insertBefore(firstChild, block);
- 
-  console.log('firstChild', firstChild);
+
 
   let currentIndex = 0; // Mantener el índice de la imagen actual
   
@@ -41,9 +39,7 @@ export default function decorate(block) {
 
   const itemWidth = 357; 
 
-  console.log('Item width:', itemWidth);
   function moveCarousel() {
-    console.log('Moving carousel to index:', currentIndex, itemWidth);
 
     [...carouselContainer.children].forEach((item) => {
       item.style.transform = `translateX(-${currentIndex * itemWidth}px)`; 

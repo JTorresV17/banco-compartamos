@@ -16,6 +16,8 @@ export default function decorate(block) {
   button.className = 'banco-compartir-button-div';
   button.textContent = content;
 
+  console.log('Button content:', content, 'URL:', url);
+
   button.addEventListener('click', () => {
     window.location.href = url;
   });
