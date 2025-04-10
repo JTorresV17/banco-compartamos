@@ -1,27 +1,32 @@
 export default function decorate(block) {
-    console.log('block social', block);
+    // Crear el contenedor principal
     const container = document.createElement('div');
-    container.className = 'banco-compartir-ui_section';
+    container.className = 'banco-compartamos-section-social-container banco-compartamos-section-social-wrapper';
+
+    // Crear el contenedor de la sección
+    const sectionContainer = document.createElement('div');
+    sectionContainer.className = 'banco-compartir-ui_section';
 
     // Crear el subcontenedor donde se colocarán los enlaces
     const subContainer = document.createElement('div');
     subContainer.className = 'banco-compartir-ui_section__subcontainer';
 
-    // Función auxiliar para crear enlaces
-    const createLink = (url, text, iconSrc = null) => {
+    // Función auxiliar para crear los enlaces con iconos y texto
+    const createLinkContainer = (url, text, iconSrc = null, linkClass = '') => {
         const linkContainer = document.createElement('div');
-        linkContainer.className = 'banco-compartir-ui_link';
+        linkContainer.className = 'banco-compartir-link-container';
 
         const link = document.createElement('a');
         link.href = url;
-        link.className = 'banco-compartir-ui_fs_14';
+        link.title = url;
+        link.className = linkClass;
         link.textContent = text;
 
-        // Agregar icono si existe
+        // Si existe un ícono, lo añadimos
         if (iconSrc) {
             const icon = document.createElement('img');
             icon.src = iconSrc;
-            icon.className = 'banco-compartir-icon';
+            icon.alt = text;
             linkContainer.appendChild(icon);
         }
 
@@ -29,32 +34,55 @@ export default function decorate(block) {
         return linkContainer;
     };
 
-    // Si existe el texto y enlace de política de privacidad, crearlo
+    // Si existen los valores de política de privacidad, añadirlos
     if (block.politicaPrivacidadLink && block.politicaPrivacidad) {
-        const politicaLink = createLink(block.politicaPrivacidadLink, block.politicaPrivacidad);
-        subContainer.appendChild(politicaLink);
+        const politicaLinkContainer = createLinkContainer(
+            block.politicaPrivacidadLink,
+            block.politicaPrivacidad,
+            null,
+            'banco-compartir-ui_fs_14'
+        );
+        subContainer.appendChild(politicaLinkContainer);
     }
 
-    // Si existe el texto y enlace de términos y condiciones, crearlo
+    // Si existen los valores de términos y condiciones, añadirlos
     if (block.terminosCondicionesLink && block.terminosCondiciones) {
-        const terminosLink = createLink(block.terminosCondicionesLink, block.terminosCondiciones);
-        subContainer.appendChild(terminosLink);
+        const terminosLinkContainer = createLinkContainer(
+            block.terminosCondicionesLink,
+            block.terminosCondiciones,
+            null,
+            'banco-compartir-ui_fs_14'
+        );
+        subContainer.appendChild(terminosLinkContainer);
     }
 
-    // Si existe el texto y enlace de Facebook, crearlo
+    // Si existen los valores de Facebook, añadirlos
     if (block.facebookUrl && block.facebookTexto) {
-        const facebookLink = createLink(block.facebookUrl, block.facebookTexto, block.iconoFacebook);
-        subContainer.appendChild(facebookLink);
+        const facebookLinkContainer = createLinkContainer(
+            block.facebookUrl,
+            block.facebookTexto,
+            block.iconoFacebook,
+            'banco-compartir-ui_fs_14'
+        );
+        subContainer.appendChild(facebookLinkContainer);
     }
 
-    // Si existe el texto y enlace de teléfono, crearlo
+    // Si existen los valores de teléfono, añadirlos
     if (block.telefonoLink && block.telefonoTexto) {
-        const telefonoLink = createLink(block.telefonoLink, block.telefonoTexto, block.iconoTelefono);
-        subContainer.appendChild(telefonoLink);
+        const telefonoLinkContainer = createLinkContainer(
+            block.telefonoLink,
+            block.telefonoTexto,
+            block.iconoTelefono,
+            'banco-compartir-ui_fs_14'
+        );
+        subContainer.appendChild(telefonoLinkContainer);
     }
 
-    // Añadir el subcontenedor con los enlaces al contenedor principal
-    container.appendChild(subContainer);
+    // Añadir el subcontenedor al contenedor de la sección
+    sectionContainer.appendChild(subContainer);
+
+    // Añadir la sección al contenedor principal
+    container.appendChild(sectionContainer);
 
     // Añadir el contenedor final al bloque
     block.appendChild(container);
