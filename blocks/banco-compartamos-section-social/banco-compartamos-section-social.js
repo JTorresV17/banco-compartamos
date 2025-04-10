@@ -1,5 +1,7 @@
 export default function decorate(block) {
     const items = Array.from(block.children);
+    console.log('block social', block);
+    console.log('block children social', block.children);
   
     // Extraer valores desde los elementos
     const discountTextElement = items.shift(); // Texto del descuento
@@ -52,4 +54,3 @@ export default function decorate(block) {
     block.innerHTML = '';
     block.appendChild(discountContent);
   }
-  
