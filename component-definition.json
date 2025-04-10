@@ -241,7 +241,8 @@
               "page": {
                 "resourceType": "core/franklin/components/button/v1/button",
                 "template": {
-                  "model": "banco-compartir-button"
+                  "model": "banco-compartir-button",
+                  "name": "Banco Compartir Button"
                 }
               }
             }
