@@ -1,56 +1,88 @@
 export default function decorate(block) {
     const items = Array.from(block.children);
-    console.log('block social', block);
-    console.log('block children social', block.children);
-  
+    
     // Extraer valores desde los elementos
-    const discountTextElement = items.shift(); // Texto del descuento
-    const textColorElement = items.shift(); // Color del texto del descuento
-    const discountCodeElement = items.shift(); // Texto del código de descuento
-    const linkTextElement = items.shift(); // Texto del link
-    const linkUrlElement = items.shift(); // URL del link
-    const backgroundColorElement = items.shift(); // Color de fondo
+    const politicaPrivacidadTextElement = items.shift(); // Texto de Política de Privacidad
+    const politicaPrivacidadLinkElement = items.shift(); // Enlace de Política de Privacidad
+    const terminosCondicionesTextElement = items.shift(); // Texto de Términos y Condiciones
+    const terminosCondicionesLinkElement = items.shift(); // Enlace de Términos y Condiciones
+    const facebookTextElement = items.shift(); // Texto de Facebook
+    const facebookLinkElement = items.shift(); // Enlace de Facebook
+    const facebookIconElement = items.shift(); // Icono de Facebook
+    const telefonoTextElement = items.shift(); // Texto de Teléfono
+    const telefonoLinkElement = items.shift(); // Enlace de Teléfono
+    const telefonoIconElement = items.shift(); // Icono de Teléfono
   
     // Obtener valores directamente desde el contenido del AEM
-    const discountText = discountTextElement?.innerHTML || '';
-    const textColor = textColorElement?.textContent.trim() || '';
-    const discountCode = discountCodeElement?.innerHTML || '';
-    const linkText = linkTextElement?.innerHTML || '';
-    const linkUrl = linkUrlElement?.querySelector('a')?.href || '';
-    const backgroundColor = backgroundColorElement?.textContent.trim() || '';
+    const politicaPrivacidadText = politicaPrivacidadTextElement?.innerHTML || '';
+    const politicaPrivacidadLink = politicaPrivacidadLinkElement?.querySelector('a')?.href || '';
+    const terminosCondicionesText = terminosCondicionesTextElement?.innerHTML || '';
+    const terminosCondicionesLink = terminosCondicionesLinkElement?.querySelector('a')?.href || '';
+    const facebookText = facebookTextElement?.innerHTML || '';
+    const facebookLink = facebookLinkElement?.querySelector('a')?.href || '';
+    const facebookIcon = facebookIconElement?.querySelector('img')?.src || '';
+    const telefonoText = telefonoTextElement?.innerHTML || '';
+    const telefonoLink = telefonoLinkElement?.querySelector('a')?.href || '';
+    const telefonoIcon = telefonoIconElement?.querySelector('img')?.src || '';
   
     // Asignar el background color a la clase existente
-    block.closest('.ulta-discount-headband-wrapper')?.style.setProperty('background-color', backgroundColor);
+    block.closest('.banco-compartir-ui_section__subcontainer')?.style.setProperty('background-color', '#f0f0f0'); // Suponiendo un color de fondo predeterminado
   
     // Crear el contenedor principal del cintillo de descuento
     const discountContent = document.createElement('div');
-    discountContent.classList.add('ulta-discount-headband');
-    discountContent.style.backgroundColor = backgroundColor;
-    discountContent.style.color = textColor;
+    discountContent.classList.add('banco-compartir-ui_section__subcontainer'); // Subcontainer
+    discountContent.style.backgroundColor = '#f0f0f0'; // Color de fondo
   
-    // Manejo del texto del descuento
-    const discountTextDiv = document.createElement('div');
-    discountTextDiv.classList.add('ulta-discount-headband-text');
-    discountTextDiv.style.color = textColor;
-    discountTextDiv.innerHTML = discountText;
+    // Manejo del texto y enlace de Política de Privacidad
+    const politicaPrivacidadDiv = document.createElement('div');
+    politicaPrivacidadDiv.classList.add('banco-compartir-link-container');
+    const politicaPrivacidadLinkElementCreated = document.createElement('a');
+    politicaPrivacidadLinkElementCreated.href = politicaPrivacidadLink;
+    politicaPrivacidadLinkElementCreated.textContent = politicaPrivacidadText;
+    politicaPrivacidadDiv.appendChild(politicaPrivacidadLinkElementCreated);
   
-    // Manejo del código de descuento
-    const discountCodeDiv = document.createElement('div');
-    discountCodeDiv.classList.add('ulta-discount-headband-code');
-    discountCodeDiv.innerHTML = discountCode;
+    // Manejo del texto y enlace de Términos y Condiciones
+    const terminosCondicionesDiv = document.createElement('div');
+    terminosCondicionesDiv.classList.add('banco-compartir-link-container');
+    const terminosCondicionesLinkElementCreated = document.createElement('a');
+    terminosCondicionesLinkElementCreated.href = terminosCondicionesLink;
+    terminosCondicionesLinkElementCreated.textContent = terminosCondicionesText;
+    terminosCondicionesDiv.appendChild(terminosCondicionesLinkElementCreated);
   
-    // Manejo del enlace
-    const discountLink = document.createElement('a');
-    discountLink.classList.add('ulta-discount-headband-link');
-    discountLink.href = linkUrl;
-    discountLink.innerHTML = linkText;
+    // Manejo del texto y enlace de Facebook
+    const facebookDiv = document.createElement('div');
+    facebookDiv.classList.add('banco-compartir-link-container');
+    const facebookLinkElementCreated = document.createElement('a');
+    facebookLinkElementCreated.href = facebookLink;
+    facebookLinkElementCreated.textContent = facebookText;
+    if (facebookIcon) {
+      const facebookIconElement = document.createElement('img');
+      facebookIconElement.src = facebookIcon;
+      facebookDiv.appendChild(facebookIconElement);
+    }
+    facebookDiv.appendChild(facebookLinkElementCreated);
   
-    // Estructura final del bloque
-    discountContent.appendChild(discountTextDiv);
-    discountContent.appendChild(discountCodeDiv);
-    discountContent.appendChild(discountLink);
+    // Manejo del texto y enlace de Teléfono
+    const telefonoDiv = document.createElement('div');
+    telefonoDiv.classList.add('banco-compartir-link-container');
+    const telefonoLinkElementCreated = document.createElement('a');
+    telefonoLinkElementCreated.href = telefonoLink;
+    telefonoLinkElementCreated.textContent = telefonoText;
+    if (telefonoIcon) {
+      const telefonoIconElement = document.createElement('img');
+      telefonoIconElement.src = telefonoIcon;
+      telefonoDiv.appendChild(telefonoIconElement);
+    }
+    telefonoDiv.appendChild(telefonoLinkElementCreated);
+  
+    // Agregar todos los elementos creados a la estructura principal
+    discountContent.appendChild(politicaPrivacidadDiv);
+    discountContent.appendChild(terminosCondicionesDiv);
+    discountContent.appendChild(facebookDiv);
+    discountContent.appendChild(telefonoDiv);
   
     // Reemplazar el contenido original del bloque con la nueva estructura
     block.innerHTML = '';
     block.appendChild(discountContent);
   }
+  
