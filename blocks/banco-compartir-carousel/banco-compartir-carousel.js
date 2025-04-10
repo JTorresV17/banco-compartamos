@@ -17,12 +17,10 @@ export default function decorate(block) {
   prevButton.disabled = true;
 
   const items = [...block.children].slice(1); 
-  const firstChild = block.firstElementChild; 
-  firstChild.className = 'banco-compartir-carousel-title';
-  block.removeChild(firstChild); 
+  // const firstChild = block.firstElementChild; 
+  // firstChild.className = 'banco-compartir-carousel-title';
+  // block.removeChild(firstChild); 
   // block.parentNode.insertBefore(firstChild, block);
- 
-  console.log('firstChild', firstChild);
 
   let currentIndex = 0; // Mantener el índice de la imagen actual
   
