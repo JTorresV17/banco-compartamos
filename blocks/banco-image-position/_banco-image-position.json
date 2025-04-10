@@ -45,7 +45,7 @@
                     "component": "text",
                     "valueType": "string",
                     "name": "variacion",
-                    "label": "Variación, escribir cambiar en el campo)",
+                    "label": "Variación escribir (cambiar) en el campo)",
                     "value": ""
                 }
             ]
