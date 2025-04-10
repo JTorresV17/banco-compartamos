@@ -17,8 +17,13 @@
       "columns",
       "fragment",
       "banco-c-items",
-      "banco-image-position",
-      "banco-compartir-carousel"
+      "banco-image-position"
+    ]
+  },
+  {
+    "id": "banco-compartir-carousel",
+    "components": [
+      "carousel-slide"
     ]
   },
   {
@@ -41,12 +46,6 @@
       "button",
       "title",
       "banco-c-items"
-    ]
-  },
-  {
-    "id": "banco-compartir-carousel",
-    "components": [
-      "carousel-slide"
     ]
   }
 ]

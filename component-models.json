@@ -168,6 +168,36 @@
     ]
   },
   {
+    "id": "banco-compartir-carousel",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "carousel-title",
+        "label": "Titulo del Carousel"
+      }
+    ]
+  },
+  {
+    "id": "carousel-slide",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "Categoria",
+        "label": "Categoria",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "banco-image-position",
     "fields": [
       {
@@ -195,7 +225,7 @@
         "component": "text",
         "valueType": "string",
         "name": "textColor",
-        "label": "Texto del Color de fondo",
+        "label": "Variación imagen lado derecho(Escribir |cambiar|))",
         "value": ""
       }
     ]
@@ -271,36 +301,6 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "banco-compartir-carousel",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "carousel-title",
-        "label": "Titulo del Carousel"
-      }
-    ]
-  },
-  {
-    "id": "carousel-slide",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "description",
-        "label": "Descripción",
-        "value": ""
       }
     ]
   }

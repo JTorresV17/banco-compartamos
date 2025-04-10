@@ -45,7 +45,7 @@
                     "component": "text",
                     "valueType": "string",
                     "name": "textColor",
-                    "label": "Texto del Color de fondo",
+                    "label": "Variación imagen lado derecho(Escribir |cambiar|))",
                     "value": ""
                 }
             ]
