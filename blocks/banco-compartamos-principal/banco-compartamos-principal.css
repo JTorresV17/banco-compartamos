@@ -1,0 +1,22 @@
+.banco-formulario-v2-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .form-left {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .form-right {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .form-right img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
