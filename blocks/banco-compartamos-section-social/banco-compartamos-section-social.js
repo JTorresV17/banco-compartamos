@@ -27,63 +27,60 @@ export default function decorate(block) {
       const telefonoText = telefonoTextElement?.innerHTML || '';
       const telefonoLink = telefonoLinkElement?.querySelector('a')?.href || '';
       const telefonoIcon = telefonoIconElement?.querySelector('img')?.src || '';
-  
+
       // Asignar el color de fondo al contenedor
       const container = block.closest('.banco-compartir-ui_section__subcontainer');
       if (container) {
-        container.style.setProperty('background-color', '#f0f0f0'); // Color de fondo (ajustable)
       }
-  
+
       // Crear el contenedor principal para el bloque de enlaces
       const discountContent = document.createElement('div');
-      discountContent.classList.add('banco-compartir-ui_section__subcontainer'); // Subcontainer
-      discountContent.style.backgroundColor = '#f0f0f0'; // Color de fondo
+      discountContent.classList.add('banco-compartir-ui_section__subcontainer');
   
       // Función para crear un enlace y agregarlo al contenedor
       function createLinkElement(text, url, iconSrc = '') {
         const div = document.createElement('div');
         div.classList.add('banco-compartir-link-container');
-  
+
         const link = document.createElement('a');
         link.href = url;
         link.textContent = text;
         link.classList.add('banco-compartir-ui_fs_14'); // Añadir la clase para el estilo
-  
+
         // Si existe un ícono, añadirlo
         if (iconSrc) {
           const icon = document.createElement('img');
           icon.src = iconSrc;
           div.appendChild(icon);
         }
-  
+
         div.appendChild(link);
         return div;
       }
-  
+
       // Crear los enlaces y agregar los íconos si existen
       if (politicaPrivacidadText && politicaPrivacidadLink) {
         const politicaPrivacidadLinkElement = createLinkElement(politicaPrivacidadText, politicaPrivacidadLink);
         discountContent.appendChild(politicaPrivacidadLinkElement);
       }
-  
+
       if (terminosCondicionesText && terminosCondicionesLink) {
         const terminosCondicionesLinkElement = createLinkElement(terminosCondicionesText, terminosCondicionesLink);
         discountContent.appendChild(terminosCondicionesLinkElement);
       }
-  
+
       if (facebookText && facebookLink) {
         const facebookLinkElement = createLinkElement(facebookText, facebookLink, facebookIcon);
         discountContent.appendChild(facebookLinkElement);
       }
-  
+
       if (telefonoText && telefonoLink) {
         const telefonoLinkElement = createLinkElement(telefonoText, telefonoLink, telefonoIcon);
         discountContent.appendChild(telefonoLinkElement);
       }
-  
+
       // Reemplazar el contenido original del bloque con la nueva estructura
       block.innerHTML = '';
       block.appendChild(discountContent);
     });
   }
-  
