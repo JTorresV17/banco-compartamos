@@ -168,6 +168,32 @@
     ]
   },
   {
+    "id": "banco-compartamos-principal",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Text Title",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "descripcion",
+        "label": "Descripcion",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "ImageDesktop",
+        "label": "Image",
+        "multi": false
+      }
+    ]
+  },
+  {
     "id": "banco-compartamos-section-social",
     "fields": [
       {
@@ -239,6 +265,23 @@
         "name": "iconoTelefono",
         "label": "Icono de Teléfono",
         "multi": false
+      }
+    ]
+  },
+  {
+    "id": "banco-compartir-button",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "text",
+        "label": "Texto",
+        "value": ""
       }
     ]
   },
@@ -376,23 +419,6 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "banco-compartir-button",
-    "fields": [
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Link"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "text",
-        "label": "Texto",
-        "value": ""
       }
     ]
   }

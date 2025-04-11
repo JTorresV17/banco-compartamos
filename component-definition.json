@@ -98,6 +98,21 @@
           }
         },
         {
+          "title": "banco-compartamos-principal",
+          "id": "banco-compartamos-principal",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "banco-compartamos-principal",
+                  "model": "banco-compartamos-principal"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "banco-compartamos-section-social",
           "id": "banco-compartamos-section-social",
           "plugins": {
@@ -107,6 +122,21 @@
                 "template": {
                   "name": "banco-compartamos-section-social",
                   "model": "banco-compartamos-section-social"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Banco Compartir Button",
+          "id": "banco-compartir-button",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "model": "banco-compartir-button",
+                  "name": "Banco Compartir Button"
                 }
               }
             }
@@ -228,21 +258,6 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero"
-                }
-              }
-            }
-          }
-        },
-        {
-          "title": "Boton Banco Compartir",
-          "id": "banco-compartir-button",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block",
-                "template": {
-                  "model": "banco-compartir-button",
-                  "name": "Banco Compartir Button"
                 }
               }
             }
