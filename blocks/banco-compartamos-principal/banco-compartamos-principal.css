@@ -89,7 +89,7 @@
     font-weight: var(--font-weight-bold);
   }
 
-  .ui_button__a :hover{
+  .ui_button__a:hover{
     background-color: var(--color-primary-principal-hover);
 }
 
