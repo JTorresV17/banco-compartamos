@@ -12,7 +12,7 @@ export default function decorate(block) {
     const telefonoTextElement = items.shift(); // Texto de Teléfono
     const telefonoLinkElement = items.shift(); // Enlace de Teléfono
     const telefonoIconElement = items.shift(); // Icono de Teléfono
-  
+
     // Obtener valores directamente desde el contenido de AEM
     const politicaPrivacidadText = politicaPrivacidadTextElement?.innerHTML || '';
     const politicaPrivacidadLink = politicaPrivacidadLinkElement?.querySelector('a')?.href || '';
@@ -24,15 +24,11 @@ export default function decorate(block) {
     const telefonoText = telefonoTextElement?.innerHTML || '';
     const telefonoLink = telefonoLinkElement?.querySelector('a')?.href || '';
     const telefonoIcon = telefonoIconElement?.querySelector('img')?.src || '';
-  
-    // Asignar el background color a la clase existente
-    block.closest('.banco-compartir-ui_section__subcontainer')?.style.setProperty('background-color', '#f0f0f0'); // Suponiendo un color de fondo predeterminado
-  
+
     // Crear el contenedor principal del cintillo de descuento
     const discountContent = document.createElement('div');
-    discountContent.classList.add('banco-compartir-ui_section__subcontainer'); // Subcontainer
-    discountContent.style.backgroundColor = '#f0f0f0'; // Color de fondo
-  
+    discountContent.classList.add('banco-compartir-ui_section__subcontainer');
+
     // Manejo del texto y enlace de Política de Privacidad
     const politicaPrivacidadDiv = document.createElement('div');
     politicaPrivacidadDiv.classList.add('banco-compartir-link-container');
@@ -89,4 +85,3 @@ export default function decorate(block) {
     block.innerHTML = '';
     block.appendChild(discountContent);
   }
-  
