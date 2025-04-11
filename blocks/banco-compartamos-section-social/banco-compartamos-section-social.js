@@ -1,9 +1,7 @@
 export default function decorate(block) {
-    // Esperar a que el contenido esté completamente cargado antes de procesar el DOM
+    console.log('block social', block);
     document.addEventListener('DOMContentLoaded', function () {
       const items = Array.from(block.children);
-      console.log('block social', block);
-  
       // Extraer valores desde los elementos
       const politicaPrivacidadTextElement = items.shift(); // Texto de Política de Privacidad
       const politicaPrivacidadLinkElement = items.shift(); // Enlace de Política de Privacidad
