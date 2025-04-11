@@ -1,6 +1,5 @@
 export default function decorate(block) {
-    console.log('Decorando banco-compartamos-principal');
-
+    console.log('Decorando banco-compartamos-principal', block);
     // Extraer celdas (columnas) del bloque
     const cells = block.querySelectorAll(':scope > div');
     const tituloCell = cells[0]?.querySelector('div');
