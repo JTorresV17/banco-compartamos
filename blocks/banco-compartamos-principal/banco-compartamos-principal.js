@@ -5,16 +5,13 @@ export default function decorate(block) {
   const tituloCell = cells[0]?.querySelector('div');
   const descripcionCell = cells[1]?.querySelector('div');
   const imagenCell = cells[2]?.querySelector('div');
-  const right = document.createElement('div');
-  right.className = 'form-right';
 
   const titulo = tituloCell?.textContent?.trim() || 'Título del formulario';
   const descripcion = descripcionCell?.textContent?.trim() || 'Descripción del formulario';
-  const image = imagenCell?.querySelector('img');
-  if (image) {
-    image.setAttribute('data-move-instrumentation', 'true'); // opcional
-    right.appendChild(image);
-    container.appendChild(right);
+  let imagenUrl = '';
+  const imgEl = imagenCell?.querySelector('img');
+  if (imgEl && imgEl.src) {
+    imagenUrl = imgEl.src;
   }
 
   // Limpiar contenido del bloque
