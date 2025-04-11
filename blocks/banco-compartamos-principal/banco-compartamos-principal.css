@@ -44,6 +44,11 @@
     cursor: pointer;
   }
 
+  .cstm-check-label a {
+    color: var(--text-color-description);
+    text-decoration: underline;
+  }
+
   .form-check-input{
     cursor: pointer;
   }

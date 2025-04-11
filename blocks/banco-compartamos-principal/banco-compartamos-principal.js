@@ -38,13 +38,13 @@ export default function decorate(block) {
       <div class="form-check cstm-check mb-20">
         <input type="checkbox" id="terms" class="form-check-input" />
         <label for="terms" class="cstm-check-label">
-          Acepto los <a href="https://www.compartamos.com.pe/Peru/terminos-y-condiciones" target="_blank" class="link-label-check">Términos y Condiciones</a>.
+          Acepto los <a href="https://www.compartamos.com.pe/Peru/terminos-y-condiciones" target="_blank" class="link-label-check">Términos y Condiciones</a> de Compartamos Banco S.A.
         </label>
       </div>
       <div class="form-check cstm-check">
         <input type="checkbox" id="privacy" class="form-check-input" />
         <label for="privacy" class="cstm-check-label">
-          Acepto la <a href="https://www.compartamos.com.pe/wcm/connect/a32c7daf-7a58-486b-8a2e-3f8c1b029fe0/Politica+de+Privacidad+de+datos+personales.pdf" target="_blank" class="link-label-check">Política de Privacidad</a>.
+          Acepto que Compartamos Banco S.A. realice el tratamiento de mis datos personales recopilados en el presente formulario de acuerdo con los términos establecidos en la <a href="https://www.compartamos.com.pe/wcm/connect/a32c7daf-7a58-486b-8a2e-3f8c1b029fe0/Politica+de+Privacidad+de+datos+personales.pdf?MOD=AJPERES&CONVERT_TO=url&CACHEID=ROOTWORKSPACE-a32c7daf-7a58-486b-8a2e-3f8c1b029fe0-n2DROm6" target="_blank" class="link-label-check">Política de Privacidad</a>.
         </label>
       </div>
     </div>
