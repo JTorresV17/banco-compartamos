@@ -1,9 +1,10 @@
 export default function decorate(block) {
-    // Asegurarse de que el DOM esté completamente cargado antes de hacer cualquier manipulación
+    // Esperamos a que el DOM esté completamente cargado antes de procesar
     document.addEventListener('DOMContentLoaded', function () {
+      // Extraer los elementos hijos de AEM
       const items = Array.from(block.children);
   
-      // Extraer valores desde los elementos
+      // Extraer los valores de cada elemento
       const politicaPrivacidadTextElement = items.shift(); // Texto de Política de Privacidad
       const politicaPrivacidadLinkElement = items.shift(); // Enlace de Política de Privacidad
       const terminosCondicionesTextElement = items.shift(); // Texto de Términos y Condiciones
@@ -15,7 +16,7 @@ export default function decorate(block) {
       const telefonoLinkElement = items.shift(); // Enlace de Teléfono
       const telefonoIconElement = items.shift(); // Icono de Teléfono
   
-      // Obtener valores directamente desde el contenido de AEM
+      // Obtener los valores de cada campo
       const politicaPrivacidadText = politicaPrivacidadTextElement?.innerHTML || '';
       const politicaPrivacidadLink = politicaPrivacidadLinkElement?.querySelector('a')?.href || '';
       const terminosCondicionesText = terminosCondicionesTextElement?.innerHTML || '';
@@ -27,65 +28,58 @@ export default function decorate(block) {
       const telefonoLink = telefonoLinkElement?.querySelector('a')?.href || '';
       const telefonoIcon = telefonoIconElement?.querySelector('img')?.src || '';
   
-      // Asignar el background color a la clase existente
-      block.closest('.banco-compartir-ui_section__subcontainer')?.style.setProperty('background-color', '#f0f0f0'); // Puedes cambiar el color de fondo si lo deseas
+      // Asignar el color de fondo al contenedor
+      const container = block.closest('.banco-compartir-ui_section__subcontainer');
+      if (container) {
+        container.style.setProperty('background-color', '#f0f0f0'); // Color de fondo (ajustable)
+      }
   
-      // Crear el contenedor principal del cintillo de descuento
+      // Crear el contenedor principal para el bloque de enlaces
       const discountContent = document.createElement('div');
       discountContent.classList.add('banco-compartir-ui_section__subcontainer'); // Subcontainer
       discountContent.style.backgroundColor = '#f0f0f0'; // Color de fondo
   
-      // Manejo del texto y enlace de Política de Privacidad
-      const politicaPrivacidadDiv = document.createElement('div');
-      politicaPrivacidadDiv.classList.add('banco-compartir-link-container');
-      const politicaPrivacidadLinkElementCreated = document.createElement('a');
-      politicaPrivacidadLinkElementCreated.href = politicaPrivacidadLink;
-      politicaPrivacidadLinkElementCreated.textContent = politicaPrivacidadText;
-      politicaPrivacidadLinkElementCreated.classList.add('banco-compartir-ui_fs_14'); // Asignamos clase para el estilo
-      politicaPrivacidadDiv.appendChild(politicaPrivacidadLinkElementCreated);
+      // Función para crear un enlace y agregarlo al contenedor
+      function createLinkElement(text, url, iconSrc = '') {
+        const div = document.createElement('div');
+        div.classList.add('banco-compartir-link-container');
   
-      // Manejo del texto y enlace de Términos y Condiciones
-      const terminosCondicionesDiv = document.createElement('div');
-      terminosCondicionesDiv.classList.add('banco-compartir-link-container');
-      const terminosCondicionesLinkElementCreated = document.createElement('a');
-      terminosCondicionesLinkElementCreated.href = terminosCondicionesLink;
-      terminosCondicionesLinkElementCreated.textContent = terminosCondicionesText;
-      terminosCondicionesLinkElementCreated.classList.add('banco-compartir-ui_fs_14'); // Asignamos clase para el estilo
-      terminosCondicionesDiv.appendChild(terminosCondicionesLinkElementCreated);
+        const link = document.createElement('a');
+        link.href = url;
+        link.textContent = text;
+        link.classList.add('banco-compartir-ui_fs_14'); // Añadir la clase para el estilo
   
-      // Manejo del texto y enlace de Facebook
-      const facebookDiv = document.createElement('div');
-      facebookDiv.classList.add('banco-compartir-link-container');
-      const facebookLinkElementCreated = document.createElement('a');
-      facebookLinkElementCreated.href = facebookLink;
-      facebookLinkElementCreated.textContent = facebookText;
-      facebookLinkElementCreated.classList.add('banco-compartir-ui_fs_14'); // Asignamos clase para el estilo
-      if (facebookIcon) {
-        const facebookIconElement = document.createElement('img');
-        facebookIconElement.src = facebookIcon;
-        facebookDiv.appendChild(facebookIconElement);
+        // Si existe un ícono, añadirlo
+        if (iconSrc) {
+          const icon = document.createElement('img');
+          icon.src = iconSrc;
+          div.appendChild(icon);
+        }
+  
+        div.appendChild(link);
+        return div;
       }
-      facebookDiv.appendChild(facebookLinkElementCreated);
   
-      // Manejo del texto y enlace de Teléfono
-      const telefonoDiv = document.createElement('div');
-      telefonoDiv.classList.add('banco-compartir-link-container');
-      const telefonoLinkElementCreated = document.createElement('a');
-      telefonoLinkElementCreated.href = telefonoLink;
-      telefonoLinkElementCreated.textContent = telefonoText;
-      telefonoLinkElementCreated.classList.add('banco-compartir-ui_fs_14'); // Asignamos clase para el estilo
-      if (telefonoIcon) {
-        const telefonoIconElement = document.createElement('img');
-        telefonoIconElement.src = telefonoIcon;
-        telefonoDiv.appendChild(telefonoIconElement);
+      // Crear los enlaces y agregar los íconos si existen
+      if (politicaPrivacidadText && politicaPrivacidadLink) {
+        const politicaPrivacidadLinkElement = createLinkElement(politicaPrivacidadText, politicaPrivacidadLink);
+        discountContent.appendChild(politicaPrivacidadLinkElement);
       }
-      telefonoDiv.appendChild(telefonoLinkElementCreated);
   
-      // Agregar todos los elementos creados a la estructura principal
-      discountContent.appendChild(politicaPrivacidadDiv);
-      discountContent.appendChild(terminosCondicionesDiv);
-      discountContent.appendChild(facebookDiv);
-      discountContent.appendChild(telefonoDiv);
+      if (terminosCondicionesText && terminosCondicionesLink) {
+        const terminosCondicionesLinkElement = createLinkElement(terminosCondicionesText, terminosCondicionesLink);
+        discountContent.appendChild(terminosCondicionesLinkElement);
+      }
+  
+      if (facebookText && facebookLink) {
+        const facebookLinkElement = createLinkElement(facebookText, facebookLink, facebookIcon);
+        discountContent.appendChild(facebookLinkElement);
+      }
+  
+      if (telefonoText && telefonoLink) {
+        const telefonoLinkElement = createLinkElement(telefonoText, telefonoLink, telefonoIcon);
+        discountContent.appendChild(telefonoLinkElement);
+      }
   
       // Reemplazar el contenido original del bloque con la nueva estructura
       block.innerHTML = '';
