@@ -1,4 +1,5 @@
 export default function decorate(block) {
+    console.log('Banco Image Position Block', block);
     const container = document.createElement('div');
     container.className = 'image-text-container';
 
@@ -23,6 +24,15 @@ export default function decorate(block) {
             cambiarOrden = true;
         }
     }
+
+    let backgroundColor = '--color-primary-principal';
+    if (children[4]) {
+        const bgValue = children[4].textContent.trim();
+        if (bgValue) backgroundColor = bgValue;
+      }
+      
+      // Aplicar background-color usando la variable CSS seleccionada
+      container.style.backgroundColor = `var(${backgroundColor})`;
 
     // Asignar imagen
     if (children[0]) {
