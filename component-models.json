@@ -345,6 +345,25 @@
         "name": "variacion",
         "label": "Variación escribir (cambiar) en el campo)",
         "value": ""
+      },
+      {
+        "component": "select",
+        "name": "backgroundColor",
+        "label": "Selecciona un color de fondo",
+        "options": [
+          {
+            "name": "Color Primario",
+            "value": "--color-primary-principal"
+          },
+          {
+            "name": "Color Secundario",
+            "value": "--color-secondary-principal"
+          },
+          {
+            "name": "Color Ecológico",
+            "value": "--color-ecology-principal"
+          }
+        ]
       }
     ]
   },

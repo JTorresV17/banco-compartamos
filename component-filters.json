@@ -18,7 +18,6 @@
       "fragment",
       "banco-image-position",
       "banco-compartamos-principal",
-      "banco-compartir-carousel",
       "banco-compartir-button"
     ]
   },
@@ -46,8 +45,7 @@
       "text",
       "image",
       "button",
-      "title",
-      "banco-c-items"
+      "title"
     ]
   }
 ]
