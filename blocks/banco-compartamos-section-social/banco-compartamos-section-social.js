@@ -1,5 +1,5 @@
 export default function decorate(block) {
-    // Esperamos a que el DOM esté completamente cargado antes de procesar
+    // Asegurarnos de que el contenido está cargado antes de ejecutar el script
     document.addEventListener('DOMContentLoaded', function () {
       // Extraer los elementos hijos de AEM
       const items = Array.from(block.children);
@@ -16,7 +16,7 @@ export default function decorate(block) {
       const telefonoLinkElement = items.shift(); // Enlace de Teléfono
       const telefonoIconElement = items.shift(); // Icono de Teléfono
   
-      // Obtener los valores de cada campo
+      // Obtener los valores de AEM
       const politicaPrivacidadText = politicaPrivacidadTextElement?.innerHTML || '';
       const politicaPrivacidadLink = politicaPrivacidadLinkElement?.querySelector('a')?.href || '';
       const terminosCondicionesText = terminosCondicionesTextElement?.innerHTML || '';
@@ -27,60 +27,63 @@ export default function decorate(block) {
       const telefonoText = telefonoTextElement?.innerHTML || '';
       const telefonoLink = telefonoLinkElement?.querySelector('a')?.href || '';
       const telefonoIcon = telefonoIconElement?.querySelector('img')?.src || '';
-
+  
       // Asignar el color de fondo al contenedor
       const container = block.closest('.banco-compartir-ui_section__subcontainer');
       if (container) {
+        container.style.setProperty('background-color', '#f0f0f0'); // Color de fondo
       }
-
-      // Crear el contenedor principal para el bloque de enlaces
-      const discountContent = document.createElement('div');
-      discountContent.classList.add('banco-compartir-ui_section__subcontainer');
   
-      // Función para crear un enlace y agregarlo al contenedor
+      // Crear el contenedor principal para los enlaces
+      const discountContent = document.createElement('div');
+      discountContent.classList.add('banco-compartir-ui_section__subcontainer'); // Subcontainer
+      discountContent.style.backgroundColor = '#f0f0f0'; // Color de fondo
+  
+      // Función para crear enlaces con iconos si están disponibles
       function createLinkElement(text, url, iconSrc = '') {
         const div = document.createElement('div');
         div.classList.add('banco-compartir-link-container');
-
+  
         const link = document.createElement('a');
         link.href = url;
         link.textContent = text;
-        link.classList.add('banco-compartir-ui_fs_14'); // Añadir la clase para el estilo
-
-        // Si existe un ícono, añadirlo
+        link.classList.add('banco-compartir-ui_fs_14'); // Clase para estilo
+  
+        // Si existe un ícono, agregarlo
         if (iconSrc) {
           const icon = document.createElement('img');
           icon.src = iconSrc;
           div.appendChild(icon);
         }
-
+  
         div.appendChild(link);
         return div;
       }
-
-      // Crear los enlaces y agregar los íconos si existen
+  
+      // Crear los enlaces para cada campo
       if (politicaPrivacidadText && politicaPrivacidadLink) {
         const politicaPrivacidadLinkElement = createLinkElement(politicaPrivacidadText, politicaPrivacidadLink);
         discountContent.appendChild(politicaPrivacidadLinkElement);
       }
-
+  
       if (terminosCondicionesText && terminosCondicionesLink) {
         const terminosCondicionesLinkElement = createLinkElement(terminosCondicionesText, terminosCondicionesLink);
         discountContent.appendChild(terminosCondicionesLinkElement);
       }
-
+  
       if (facebookText && facebookLink) {
         const facebookLinkElement = createLinkElement(facebookText, facebookLink, facebookIcon);
         discountContent.appendChild(facebookLinkElement);
       }
-
+  
       if (telefonoText && telefonoLink) {
         const telefonoLinkElement = createLinkElement(telefonoText, telefonoLink, telefonoIcon);
         discountContent.appendChild(telefonoLinkElement);
       }
-
+  
       // Reemplazar el contenido original del bloque con la nueva estructura
       block.innerHTML = '';
       block.appendChild(discountContent);
     });
   }
+  
