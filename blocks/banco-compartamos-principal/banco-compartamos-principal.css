@@ -47,6 +47,7 @@
   .cstm-check-label a {
     color: var(--text-color-description);
     text-decoration: underline;
+    font-weight: var(--font-weight-bold);
   }
 
   .form-check-input{
