@@ -52,8 +52,7 @@
   }
 
   .ui_form_row--checkbox_movil{
-    display: flex;
-    align-items: center;
+    display: block
   }
 
   .ui_form_item{
