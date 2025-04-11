@@ -24,7 +24,7 @@
   
   .ui_title__h2{
     color: var(--color-primary-principal);
-    font-size: var(--al-font-size-x7);
+    font-size: var(--al-font-size-x8);
     font-weight: var(--font-weight-bold);
     line-height: 35px;
     margin-top: 50px;
@@ -77,7 +77,7 @@
     border: 1px solid #bcb8b0;
     font-weight: 400;
     padding: 10px 16px;
-    width: 150px;
+    width: 170px;;
   }
 
   .ui_button__a{
