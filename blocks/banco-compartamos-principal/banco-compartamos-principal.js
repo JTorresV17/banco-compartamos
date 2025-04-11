@@ -1,39 +1,46 @@
 export default function decorate(block) {
-    console.log('Decorando banco-compartamos-principal', block);
-    // Extraer celdas (columnas) del bloque
-    const cells = block.querySelectorAll(':scope > div');
-    const tituloCell = cells[0]?.querySelector('div');
-    const descripcionCell = cells[1]?.querySelector('div');
-    const imagenCell = cells[2]?.querySelector('div');
+  console.log('Decorando banco-compartamos-principal', block);
+  // Extraer celdas (columnas) del bloque
+  const cells = block.querySelectorAll(':scope > div');
+  const tituloCell = cells[0]?.querySelector('div');
+  const descripcionCell = cells[1]?.querySelector('div');
+  const imagenCell = cells[2]?.querySelector('div');
+  const right = document.createElement('div');
+  right.className = 'form-right';
 
-    const titulo = tituloCell?.textContent?.trim() || 'Título del formulario';
-    const descripcion = descripcionCell?.textContent?.trim() || 'Descripción del formulario';
-    const imagenUrl = imagenCell?.textContent?.trim() || '';
+  const titulo = tituloCell?.textContent?.trim() || 'Título del formulario';
+  const descripcion = descripcionCell?.textContent?.trim() || 'Descripción del formulario';
+  const image = imagenCell?.querySelector('img');
+  if (image) {
+    image.setAttribute('data-move-instrumentation', 'true'); // opcional
+    right.appendChild(image);
+    container.appendChild(right);
+  }
 
-    // Limpiar contenido del bloque
-    block.innerHTML = '';
+  // Limpiar contenido del bloque
+  block.innerHTML = '';
 
-    // Crear contenedor principal
-    const container = document.createElement('div');
-    container.className = 'banco-formulario-v2-container';
+  // Crear contenedor principal
+  const container = document.createElement('div');
+  container.className = 'banco-formulario-v2-container';
 
-    // Lado izquierdo (título, desc, formulario)
-    const left = document.createElement('div');
-    left.className = 'form-left';
+  // Lado izquierdo (título, desc, formulario)
+  const left = document.createElement('div');
+  left.className = 'form-left';
 
-    const title = document.createElement('h2');
-    title.className = 'ui_title__h2 ui_fs_48 ui_c_CE005D';
-    title.textContent = titulo;
+  const title = document.createElement('h2');
+  title.className = 'ui_title__h2 ui_fs_48 ui_c_CE005D';
+  title.textContent = titulo;
 
-    const paragraph = document.createElement('p');
-    paragraph.className = 'ui_paragraph__p ui_paragraph__p--form ui_fs_24';
-    paragraph.textContent = descripcion;
+  const paragraph = document.createElement('p');
+  paragraph.className = 'ui_paragraph__p ui_paragraph__p--form ui_fs_24';
+  paragraph.textContent = descripcion;
 
-    // Formulario simulado
-    const formGroup = document.createElement('div');
-    formGroup.className = 'ui_form_group';
+  // Formulario simulado
+  const formGroup = document.createElement('div');
+  formGroup.className = 'ui_form_group';
 
-    formGroup.innerHTML = `
+  formGroup.innerHTML = `
       <div class="ui_form_row ui_form_row--col">
         <div class="ui_form_item ui_col_50"><input type="text" placeholder="Nombre" class="form-control" /></div>
         <div class="ui_form_item ui_col_50"><input type="text" placeholder="Apellido" class="form-control" /></div>
@@ -61,29 +68,29 @@ export default function decorate(block) {
       </div>
     `;
 
-    formGroup.querySelector('button').addEventListener('click', () => {
-      alert('Se ha guardado tu información y serás contactado.');
-    });
+  formGroup.querySelector('button').addEventListener('click', () => {
+    alert('Se ha guardado tu información y serás contactado.');
+  });
 
-    // Ensamblar la parte izquierda
-    left.appendChild(title);
-    left.appendChild(paragraph);
-    left.appendChild(formGroup);
-    container.appendChild(left);
+  // Ensamblar la parte izquierda
+  left.appendChild(title);
+  left.appendChild(paragraph);
+  left.appendChild(formGroup);
+  container.appendChild(left);
 
-    // Lado derecho (imagen decorativa)
-    if (imagenUrl) {
-      const right = document.createElement('div');
-      right.className = 'form-right';
+  // Lado derecho (imagen decorativa)
+  if (imagenUrl) {
+    const right = document.createElement('div');
+    right.className = 'form-right';
 
-      const img = document.createElement('img');
-      img.src = imagenUrl;
-      img.alt = 'Imagen decorativa';
-      img.loading = 'lazy';
-  
-      right.appendChild(img);
-      container.appendChild(right);
-    }
+    const img = document.createElement('img');
+    img.src = imagenUrl;
+    img.alt = 'Imagen decorativa';
+    img.loading = 'lazy';
 
-    block.appendChild(container);
+    right.appendChild(img);
+    container.appendChild(right);
+  }
+
+  block.appendChild(container);
 }
